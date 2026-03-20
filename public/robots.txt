@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kamil-elewacje.pl/sitemap-index.xml

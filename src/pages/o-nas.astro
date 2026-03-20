@@ -4,13 +4,14 @@ import Partners from '../components/Partners.astro';
 ---
 
 <Layout
-  title="O nas"
+  title="O nas — 15+ Lat Doświadczenia w Elewacjach"
   description="Poznaj Elewacje z Klasą — firma Kamila Ochałka specjalizująca się w profesjonalnych elewacjach i ociepleniach budynków w Polsce. Ponad 15 lat doświadczenia."
+  schemaType="about"
 >
   <!-- Page Hero -->
   <section class="relative pt-32 pb-20 bg-slate-900 overflow-hidden">
     <div class="absolute inset-0">
-      <img src="/images/projects/dom-ocieplanie.jpg" alt="" class="w-full h-full object-cover opacity-20" />
+      <img src="/images/projects/dom-ocieplanie.jpg" alt="Ocieplanie domu — Elewacje z Klasą w trakcie realizacji" class="w-full h-full object-cover opacity-20" />
       <div class="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/90 to-slate-900"></div>
     </div>
     <div class="absolute top-0 left-0 w-full h-1.5 bg-red-600"></div>
@@ -185,20 +186,25 @@ import Partners from '../components/Partners.astro';
   </section>
 
   <!-- Photo Gallery Strip -->
-  <section class="py-4 bg-slate-50">
-    <div class="flex gap-4 overflow-hidden">
-      {[
-        '/images/projects/osiedle-front.jpg',
-        '/images/projects/dom-parterowy.jpg',
-        '/images/projects/kamienica-front.jpg',
-        '/images/projects/dom-ciemny.jpg',
-        '/images/projects/dom-szary-biel.jpg',
-        '/images/projects/osiedle-ogrod.jpg',
-      ].map((src) => (
-        <div class="flex-shrink-0 w-64 h-44 rounded-xl overflow-hidden">
-          <img src={src} alt="Realizacja elewacji" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
-        </div>
-      ))}
+  <section class="py-12 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-9 gap-3 lg:gap-4">
+        {[
+          { src: '/images/projects/osiedle-front.jpg', alt: 'Osiedle domów' },
+          { src: '/images/projects/dom-parterowy.jpg', alt: 'Dom parterowy' },
+          { src: '/images/projects/kamienica-front.jpg', alt: 'Kamienica miejska' },
+          { src: '/images/projects/dom-ciemny-asymetryczny.jpg', alt: 'Dom z ciemną elewacją' },
+          { src: '/images/projects/blizniak-budowa.jpg', alt: 'Bliźniak' },
+          { src: '/images/projects/kamienica-boczna.jpg', alt: 'Kamienica boczna' },
+          { src: '/images/projects/dom-ocieplenie-styropian.jpg', alt: 'Dom ocieplenie styropian' },
+          { src: '/images/projects/dom-szary-biel.jpg', alt: 'Dom biało-grafitowy' },
+          { src: '/images/projects/budynek-wielorodzinny.jpg', alt: 'Budynek wielorodzinny' },
+        ].map((img) => (
+          <a href="/realizacje" class="aspect-square rounded-xl overflow-hidden">
+            <img src={img.src} alt={img.alt} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 

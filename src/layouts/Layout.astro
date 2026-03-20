@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
+import Schema from '../components/Schema.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 
@@ -9,15 +10,17 @@ interface Props {
   description: string;
   image?: string;
   type?: string;
+  schemaType?: 'home' | 'services' | 'projects' | 'about' | 'contact';
 }
 
-const { title, description, image, type } = Astro.props;
+const { title, description, image, type, schemaType = 'home' } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="pl">
   <head>
     <SEO title={title} description={description} image={image} type={type} />
+    <Schema type={schemaType} />
   </head>
   <body class="bg-slate-50 text-slate-900 overflow-x-hidden">
     <Navigation />

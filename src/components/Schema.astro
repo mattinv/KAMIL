@@ -1,0 +1,130 @@
+---
+interface Props {
+  type?: 'home' | 'services' | 'projects' | 'about' | 'contact';
+}
+
+const { type = 'home' } = Astro.props;
+
+const baseUrl = 'https://kamil-elewacje.pl';
+
+const organization = {
+  '@type': 'LocalBusiness',
+  '@id': `${baseUrl}/#organization`,
+  name: 'Elewacje z Klasą',
+  alternateName: 'Elewacje z Klasą — Kamil Ochałek',
+  url: baseUrl,
+  logo: `${baseUrl}/logo.png`,
+  image: `${baseUrl}/og-image.jpg`,
+  description: 'Profesjonalne usługi elewacyjne i ociepleniowe w Krakowie i Małopolsce. Systemy ETICS, elewacje wentylowane, projekty komercyjne.',
+  telephone: ['+48518768737', '+48515156233'],
+  email: 'kamilttage@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Kobierzyńska 103/5',
+    addressLocality: 'Kraków',
+    postalCode: '30-382',
+    addressCountry: 'PL',
+    addressRegion: 'Małopolska',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 50.0357,
+    longitude: 19.9217,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '07:00',
+      closes: '17:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: '08:00',
+      closes: '14:00',
+    },
+  ],
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: 'Małopolska',
+  },
+  priceRange: '$$',
+  taxID: '6762421312',
+  sameAs: [],
+};
+
+const services = [
+  {
+    '@type': 'Service',
+    name: 'Systemy Ociepleń ETICS',
+    description: 'Kompleksowe ocieplenia budynków metodą lekką-mokrą z certyfikowanymi systemami Weber, Baumit i Caparol.',
+    provider: { '@id': `${baseUrl}/#organization` },
+    areaServed: 'Małopolska',
+    url: `${baseUrl}/uslugi#etics`,
+  },
+  {
+    '@type': 'Service',
+    name: 'Elewacje Wentylowane',
+    description: 'Nowoczesne fasady wentylowane z płyt HPL, włókno-cementowych oraz paneli aluminiowych. Trwałość ponad 50 lat.',
+    provider: { '@id': `${baseUrl}/#organization` },
+    areaServed: 'Małopolska',
+    url: `${baseUrl}/uslugi#wentylowane`,
+  },
+  {
+    '@type': 'Service',
+    name: 'Projekty Komercyjne',
+    description: 'Realizacje elewacji dla deweloperów, inwestorów i sektora publicznego — biurowce, hale, centra handlowe.',
+    provider: { '@id': `${baseUrl}/#organization` },
+    areaServed: 'Małopolska',
+    url: `${baseUrl}/uslugi#komercyjne`,
+  },
+];
+
+// Build breadcrumb based on page type
+const breadcrumbMap: Record<string, { name: string; url: string }[]> = {
+  home: [],
+  services: [{ name: 'Usługi', url: `${baseUrl}/uslugi` }],
+  projects: [{ name: 'Realizacje', url: `${baseUrl}/realizacje` }],
+  about: [{ name: 'O nas', url: `${baseUrl}/o-nas` }],
+  contact: [{ name: 'Kontakt', url: `${baseUrl}/kontakt` }],
+};
+
+const breadcrumbItems = [
+  { name: 'Strona główna', url: baseUrl },
+  ...(breadcrumbMap[type] || []),
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbItems.map((item, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: item.name,
+    item: item.url,
+  })),
+};
+
+// Homepage gets full Organization + Services schema
+const homeSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [organization, ...services],
+};
+
+// Services page gets just services
+const servicesSchema = {
+  '@context': 'https://schema.org',
+  '@graph': services,
+};
+---
+
+{type === 'home' && (
+  <script type="application/ld+json" set:html={JSON.stringify(homeSchema)} />
+)}
+
+{type === 'services' && (
+  <script type="application/ld+json" set:html={JSON.stringify(servicesSchema)} />
+)}
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

@@ -16,7 +16,9 @@ const {
 } = Astro.props;
 
 const siteName = 'Elewacje z Klasą';
-const fullTitle = title === 'Strona główna' ? siteName : `${title} | ${siteName}`;
+const fullTitle = title === 'Strona główna'
+  ? `${siteName} | Profesjonalne Ocieplenia i Elewacje Kraków, Małopolska`
+  : `${title} | ${siteName}`;
 ---
 
 <meta charset="utf-8" />
@@ -30,7 +32,6 @@ const fullTitle = title === 'Strona główna' ? siteName : `${title} | ${siteNam
 
 <!-- Language -->
 <meta http-equiv="content-language" content="pl" />
-<html lang="pl" />
 
 <!-- OpenGraph -->
 <meta property="og:type" content={type} />
