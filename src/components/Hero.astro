@@ -1,13 +1,21 @@
 ---
+import type { Locale } from '../i18n/config';
+import { localePath } from '../i18n/config';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'pl' } = Astro.props;
+const en = locale === 'en';
 ---
 
 <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
   <!-- Background -->
   <div class="absolute inset-0 bg-slate-950">
-    <img src="/images/hero.jpg" alt="Profesjonalna elewacja budynku — realizacja Elewacje z Klasą Kraków" class="absolute inset-0 w-full h-full object-cover object-center" loading="eager" />
+    <img src="/images/hero.jpg" alt={en ? "Professional building facade — Elewacje z Klasą Kraków" : "Profesjonalna elewacja budynku — realizacja Elewacje z Klasą Kraków"} class="absolute inset-0 w-full h-full object-cover object-center" loading="eager" />
     <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-    <!-- Orange accent bar like the banner -->
     <div class="absolute top-0 left-0 w-full h-1.5 bg-red-600"></div>
   </div>
 
@@ -18,7 +26,6 @@
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <!-- Left: Content -->
       <div class="space-y-8">
-        <!-- Phone numbers like the banner -->
         <div class="flex flex-wrap items-center gap-4">
           <a href="tel:+48515156233" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/15 border border-red-500/30 hover:bg-orange-500/25 transition-colors">
             <svg class="w-4 h-4 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -28,7 +35,6 @@
           </a>
         </div>
 
-        <!-- Bold ELEWACJE like the banner -->
         <div>
           <h1 class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-orange-500 leading-[0.95] tracking-tight uppercase">
             ELEWACJE
@@ -40,42 +46,42 @@
           </div>
         </div>
 
-        <!-- Key services from the banner -->
         <div class="space-y-3">
           <div class="flex items-center gap-3">
             <div class="w-2 h-2 bg-red-600 rounded-full"></div>
-            <span class="text-lg text-white font-medium">Fachowe doradztwo</span>
+            <span class="text-lg text-white font-medium">{en ? 'Expert Consulting' : 'Fachowe doradztwo'}</span>
           </div>
           <div class="flex items-center gap-3">
             <div class="w-2 h-2 bg-red-600 rounded-full"></div>
-            <span class="text-lg text-white font-medium">Wizualizacje elewacji</span>
+            <span class="text-lg text-white font-medium">{en ? 'Facade Visualizations' : 'Wizualizacje elewacji'}</span>
           </div>
           <div class="flex items-center gap-3">
             <div class="w-2 h-2 bg-red-600 rounded-full"></div>
-            <span class="text-lg text-white font-medium">Ocieplenia budynków</span>
+            <span class="text-lg text-white font-medium">{en ? 'Building Insulation' : 'Ocieplenia budynków'}</span>
           </div>
         </div>
 
         <p class="text-base text-slate-400 max-w-lg leading-relaxed">
-          Kompleksowe usługi elewacyjne i ociepleniowe dla domów jednorodzinnych
-          oraz obiektów komercyjnych w całej Polsce. Zaufaj profesjonalistom.
+          {en
+            ? 'Comprehensive facade and insulation services for residential homes and commercial buildings throughout Poland. Trust the professionals.'
+            : 'Kompleksowe usługi elewacyjne i ociepleniowe dla domów jednorodzinnych oraz obiektów komercyjnych w całej Polsce. Zaufaj profesjonalistom.'}
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4">
           <a
-            href="#kontakt"
+            href={en ? '/en/contact' : '#kontakt'}
             class="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-red-600 hover:bg-red-500 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-red-600/25 hover:-translate-y-0.5"
           >
-            Darmowa Wycena
+            {en ? 'Free Quote' : 'Darmowa Wycena'}
             <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </a>
           <a
-            href="/realizacje"
+            href={localePath('/realizacje', locale)}
             class="inline-flex items-center justify-center gap-3 px-8 py-4 border border-slate-600 hover:border-red-500/50 text-white font-semibold text-lg rounded-xl transition-all duration-300 hover:bg-white/5"
           >
-            Nasze Realizacje
+            {en ? 'Our Projects' : 'Nasze Realizacje'}
           </a>
         </div>
 
@@ -85,14 +91,14 @@
             <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
             </svg>
-            <span class="text-sm text-slate-400">Certyfikat ETICS</span>
+            <span class="text-sm text-slate-400">{en ? 'ETICS Certificate' : 'Certyfikat ETICS'}</span>
           </div>
           <div class="w-px h-4 bg-slate-700"></div>
           <div class="flex items-center gap-2">
             <svg class="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
-            <span class="text-sm text-slate-400">Gwarancja 10 lat</span>
+            <span class="text-sm text-slate-400">{en ? '10-Year Warranty' : 'Gwarancja 10 lat'}</span>
           </div>
         </div>
       </div>
@@ -102,30 +108,30 @@
         <div class="glass-dark rounded-3xl p-8 space-y-6 border-t-2 border-red-600">
           <div class="flex items-center gap-3 mb-6">
             <div class="w-3 h-3 rounded-full bg-red-600"></div>
-            <span class="text-white/60 text-sm font-medium uppercase tracking-wider">Aktualny projekt</span>
+            <span class="text-white/60 text-sm font-medium uppercase tracking-wider">{en ? 'Current project' : 'Aktualny projekt'}</span>
           </div>
 
           <div class="aspect-[4/3] rounded-2xl overflow-hidden relative">
-            <img src="/images/projects/osiedle-front.jpg" alt="Osiedle domów jednorodzinnych" class="w-full h-full object-cover" loading="lazy" />
+            <img src="/images/projects/osiedle-front.jpg" alt={en ? "Residential housing estate" : "Osiedle domów jednorodzinnych"} class="w-full h-full object-cover" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
             <div class="absolute bottom-4 left-4 right-4">
-              <p class="text-white font-semibold">Osiedle domów jednorodzinnych</p>
-              <p class="text-slate-400 text-sm">Elewacja tynk silikonowy + detale</p>
+              <p class="text-white font-semibold">{en ? 'Residential Housing Estate' : 'Osiedle domów jednorodzinnych'}</p>
+              <p class="text-slate-400 text-sm">{en ? 'Silicone plaster facade + details' : 'Elewacja tynk silikonowy + detale'}</p>
             </div>
           </div>
 
           <div class="grid grid-cols-3 gap-4">
             <div class="text-center p-3 rounded-xl bg-white/5">
               <p class="text-2xl font-bold text-white">420</p>
-              <p class="text-xs text-slate-400">m² elewacji</p>
+              <p class="text-xs text-slate-400">{en ? 'm² facade' : 'm² elewacji'}</p>
             </div>
             <div class="text-center p-3 rounded-xl bg-white/5">
               <p class="text-2xl font-bold text-white">12</p>
-              <p class="text-xs text-slate-400">tygodni</p>
+              <p class="text-xs text-slate-400">{en ? 'weeks' : 'tygodni'}</p>
             </div>
             <div class="text-center p-3 rounded-xl bg-white/5">
               <p class="text-2xl font-bold text-orange-400">A+</p>
-              <p class="text-xs text-slate-400">klasa energ.</p>
+              <p class="text-xs text-slate-400">{en ? 'energy class' : 'klasa energ.'}</p>
             </div>
           </div>
         </div>
@@ -138,7 +144,7 @@
 
   <!-- Scroll indicator -->
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-    <span class="text-slate-500 text-xs uppercase tracking-widest">Przewiń</span>
+    <span class="text-slate-500 text-xs uppercase tracking-widest">{en ? 'Scroll' : 'Przewiń'}</span>
     <svg class="w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
       <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
     </svg>

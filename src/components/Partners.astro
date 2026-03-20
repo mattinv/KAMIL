@@ -1,4 +1,13 @@
 ---
+import type { Locale } from '../i18n/config';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'pl' } = Astro.props;
+const en = locale === 'en';
+
 interface Partner {
   name: string;
   logo?: string;
@@ -29,7 +38,7 @@ const partners: Partner[] = [
     <!-- Header -->
     <div class="text-center mb-12">
       <p class="text-sm font-bold uppercase tracking-[0.2em] text-slate-400">
-        Zaufani partnerzy i producenci
+        {en ? 'Trusted partners and manufacturers' : 'Zaufani partnerzy i producenci'}
       </p>
     </div>
 

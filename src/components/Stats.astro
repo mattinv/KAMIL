@@ -1,9 +1,18 @@
 ---
+import type { Locale } from '../i18n/config';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'pl' } = Astro.props;
+const en = locale === 'en';
+
 const stats = [
-  { value: '15+', label: 'Lat doświadczenia', suffix: '' },
-  { value: '300+', label: 'Zrealizowanych projektów', suffix: '' },
-  { value: '98%', label: 'Zadowolonych klientów', suffix: '' },
-  { value: '50k+', label: 'Metrów kw. elewacji', suffix: 'm²' },
+  { value: '15+', label: en ? 'Years of experience' : 'Lat doświadczenia' },
+  { value: '300+', label: en ? 'Completed projects' : 'Zrealizowanych projektów' },
+  { value: '98%', label: en ? 'Satisfied clients' : 'Zadowolonych klientów' },
+  { value: '50k+', label: en ? 'Sq meters of facade' : 'Metrów kw. elewacji' },
 ];
 ---
 

@@ -1,28 +1,50 @@
 ---
+import type { Locale } from '../i18n/config';
+import { localePath } from '../i18n/config';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'pl' } = Astro.props;
+const en = locale === 'en';
+
 const services = [
   {
     icon: 'layers',
-    title: 'Systemy Ociepleń (ETICS)',
-    description: 'Kompleksowe ocieplenia budynków metodą lekką-mokrą. Stosujemy certyfikowane systemy Weber, Baumit i Caparol z pełną gwarancją producenta.',
-    features: ['Styropian EPS / XPS', 'Wełna mineralna', 'Grafitowy styropian', 'Klasa A+ energetyczna'],
+    title: en ? 'Insulation Systems (ETICS)' : 'Systemy Ociepleń (ETICS)',
+    description: en
+      ? 'Comprehensive building insulation using the light-wet method. We use certified Weber, Baumit, and Caparol systems with full manufacturer warranty.'
+      : 'Kompleksowe ocieplenia budynków metodą lekką-mokrą. Stosujemy certyfikowane systemy Weber, Baumit i Caparol z pełną gwarancją producenta.',
+    features: en
+      ? ['EPS / XPS Polystyrene', 'Mineral wool', 'Graphite polystyrene', 'A+ energy class']
+      : ['Styropian EPS / XPS', 'Wełna mineralna', 'Grafitowy styropian', 'Klasa A+ energetyczna'],
     accent: 'from-red-500 to-red-600',
-    link: '/uslugi#etics',
+    link: localePath('/uslugi', locale) + '#etics',
   },
   {
     icon: 'grid',
-    title: 'Elewacje Wentylowane',
-    description: 'Nowoczesne fasady wentylowane z płyt HPL, włókno-cementowych oraz paneli aluminiowych. Trwałość ponad 50 lat.',
-    features: ['Płyty HPL / Trespa', 'Panele kompozytowe', 'Okładziny ceramiczne', 'Systemy podkonstrukcji'],
+    title: en ? 'Ventilated Facades' : 'Elewacje Wentylowane',
+    description: en
+      ? 'Modern ventilated facades with HPL panels, fiber-cement boards, and aluminum panels. Durability over 50 years.'
+      : 'Nowoczesne fasady wentylowane z płyt HPL, włókno-cementowych oraz paneli aluminiowych. Trwałość ponad 50 lat.',
+    features: en
+      ? ['HPL / Trespa panels', 'Composite panels', 'Ceramic cladding', 'Substructure systems']
+      : ['Płyty HPL / Trespa', 'Panele kompozytowe', 'Okładziny ceramiczne', 'Systemy podkonstrukcji'],
     accent: 'from-slate-700 to-slate-800',
-    link: '/uslugi#wentylowane',
+    link: localePath('/uslugi', locale) + '#wentylowane',
   },
   {
     icon: 'building',
-    title: 'Projekty Komercyjne',
-    description: 'Realizacje dla deweloperów, inwestorów i sektora publicznego. Biurowce, hale, centra handlowe i budynki wielorodzinne.',
-    features: ['Budynki wielorodzinne', 'Obiekty biurowe', 'Hale przemysłowe', 'Obiekty użyteczności publicznej'],
+    title: en ? 'Commercial Projects' : 'Projekty Komercyjne',
+    description: en
+      ? 'Projects for developers, investors, and the public sector. Office buildings, halls, shopping centers, and multi-family buildings.'
+      : 'Realizacje dla deweloperów, inwestorów i sektora publicznego. Biurowce, hale, centra handlowe i budynki wielorodzinne.',
+    features: en
+      ? ['Multi-family buildings', 'Office buildings', 'Industrial halls', 'Public utility buildings']
+      : ['Budynki wielorodzinne', 'Obiekty biurowe', 'Hale przemysłowe', 'Obiekty użyteczności publicznej'],
     accent: 'from-red-500 to-red-600',
-    link: '/uslugi#komercyjne',
+    link: localePath('/uslugi', locale) + '#komercyjne',
   },
 ];
 
@@ -38,15 +60,16 @@ const iconPaths: Record<string, string> = {
     <!-- Section Header -->
     <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-200 mb-6">
-        <span class="text-orange-600 text-sm font-semibold">Nasze Usługi</span>
+        <span class="text-orange-600 text-sm font-semibold">{en ? 'Our Services' : 'Nasze Usługi'}</span>
       </div>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-        Kompleksowe rozwiązania<br />
-        <span class="text-gradient">fasadowe</span>
+        {en ? 'Comprehensive facade' : 'Kompleksowe rozwiązania'}<br />
+        <span class="text-gradient">{en ? 'solutions' : 'fasadowe'}</span>
       </h2>
       <p class="mt-6 text-lg text-slate-500 leading-relaxed">
-        Od projektu po realizację — zapewniamy pełen zakres usług związanych
-        z ociepleniem i wykończeniem elewacji budynków.
+        {en
+          ? 'From design to completion — we provide a full range of services related to building insulation and facade finishing.'
+          : 'Od projektu po realizację — zapewniamy pełen zakres usług związanych z ociepleniem i wykończeniem elewacji budynków.'}
       </p>
     </div>
 
@@ -82,7 +105,7 @@ const iconPaths: Record<string, string> = {
 
           <!-- Arrow link -->
           <a href={service.link} class="mt-8 flex items-center gap-2 text-red-600 font-semibold text-sm group-hover:gap-3 transition-all duration-300">
-            <span>Dowiedz się więcej</span>
+            <span>{en ? 'Learn more' : 'Dowiedz się więcej'}</span>
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>

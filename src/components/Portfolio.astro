@@ -1,74 +1,84 @@
 ---
+import type { Locale } from '../i18n/config';
+import { localePath } from '../i18n/config';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'pl' } = Astro.props;
+const en = locale === 'en';
+
 const projects = [
   {
-    title: 'Osiedle Domów Jednorodzinnych',
+    title: en ? 'Single-Family Housing Estate' : 'Osiedle Domów Jednorodzinnych',
     category: 'dom',
-    categoryLabel: 'Dom Jednorodzinny',
-    description: 'Elewacja tynk silikonowy biało-grafitowy',
+    categoryLabel: en ? 'Single-Family Home' : 'Dom Jednorodzinny',
+    description: en ? 'White-graphite silicone plaster facade' : 'Elewacja tynk silikonowy biało-grafitowy',
     area: '1,200 m²',
     image: '/images/projects/osiedle-front.jpg',
   },
   {
-    title: 'Kamienica Miejska',
+    title: en ? 'City Tenement House' : 'Kamienica Miejska',
     category: 'komercyjny',
-    categoryLabel: 'Obiekt Komercyjny',
-    description: 'Nowoczesna elewacja z przeszkleniami',
+    categoryLabel: en ? 'Commercial Building' : 'Obiekt Komercyjny',
+    description: en ? 'Modern facade with glazing' : 'Nowoczesna elewacja z przeszkleniami',
     area: '800 m²',
     image: '/images/projects/kamienica-front.jpg',
   },
   {
-    title: 'Dom Parterowy z Drewnem',
+    title: en ? 'Single-Story House with Wood' : 'Dom Parterowy z Drewnem',
     category: 'dom',
-    categoryLabel: 'Dom Jednorodzinny',
-    description: 'Tynk silikonowy z detalami drewnopodobnymi',
+    categoryLabel: en ? 'Single-Family Home' : 'Dom Jednorodzinny',
+    description: en ? 'Silicone plaster with wood-like details' : 'Tynk silikonowy z detalami drewnopodobnymi',
     area: '180 m²',
     image: '/images/projects/dom-parterowy.jpg',
   },
   {
-    title: 'Bliźniak — Budowa',
+    title: en ? 'Semi-Detached — Construction' : 'Bliźniak — Budowa',
     category: 'dom',
-    categoryLabel: 'Dom Jednorodzinny',
-    description: 'Ocieplenie i tynk na etapie budowy',
+    categoryLabel: en ? 'Single-Family Home' : 'Dom Jednorodzinny',
+    description: en ? 'Insulation and plaster during construction' : 'Ocieplenie i tynk na etapie budowy',
     area: '320 m²',
     image: '/images/projects/blizniak-budowa.jpg',
   },
   {
-    title: 'Kamienica — Elewacja Boczna',
+    title: en ? 'Tenement House — Side Facade' : 'Kamienica — Elewacja Boczna',
     category: 'komercyjny',
-    categoryLabel: 'Obiekt Komercyjny',
-    description: 'Renowacja elewacji budynku wielorodzinnego',
+    categoryLabel: en ? 'Commercial Building' : 'Obiekt Komercyjny',
+    description: en ? 'Renovation of a multi-family building facade' : 'Renowacja elewacji budynku wielorodzinnego',
     area: '600 m²',
     image: '/images/projects/kamienica-boczna.jpg',
   },
   {
-    title: 'Dom — Ocieplenie Styropianem',
+    title: en ? 'House — Polystyrene Insulation' : 'Dom — Ocieplenie Styropianem',
     category: 'dom',
-    categoryLabel: 'Dom Jednorodzinny',
-    description: 'Montaż styropianu Enerpor z izolacją cokołową XPS',
+    categoryLabel: en ? 'Single-Family Home' : 'Dom Jednorodzinny',
+    description: en ? 'Enerpor polystyrene installation with XPS base insulation' : 'Montaż styropianu Enerpor z izolacją cokołową XPS',
     area: '200 m²',
     image: '/images/projects/dom-ocieplenie-styropian.jpg',
   },
   {
-    title: 'Dom Biało-Grafitowy',
+    title: en ? 'White-Graphite House' : 'Dom Biało-Grafitowy',
     category: 'dom',
-    categoryLabel: 'Dom Jednorodzinny',
-    description: 'Elewacja biało-grafitowa z brązowymi detalami',
+    categoryLabel: en ? 'Single-Family Home' : 'Dom Jednorodzinny',
+    description: en ? 'White-graphite facade with brown details' : 'Elewacja biało-grafitowa z brązowymi detalami',
     area: '280 m²',
     image: '/images/projects/dom-ocieplanie.jpg',
   },
   {
-    title: 'Budynek Wielorodzinny',
+    title: en ? 'Multi-Family Building' : 'Budynek Wielorodzinny',
     category: 'komercyjny',
-    categoryLabel: 'Obiekt Komercyjny',
-    description: 'Ocieplenie i tynkowanie na rusztowaniach',
+    categoryLabel: en ? 'Commercial Building' : 'Obiekt Komercyjny',
+    description: en ? 'Insulation and plastering on scaffolding' : 'Ocieplenie i tynkowanie na rusztowaniach',
     area: '1,500 m²',
     image: '/images/projects/budynek-wielorodzinny.jpg',
   },
   {
-    title: 'Dom z Ciemną Elewacją',
+    title: en ? 'House with Dark Facade' : 'Dom z Ciemną Elewacją',
     category: 'dom',
-    categoryLabel: 'Dom Jednorodzinny',
-    description: 'Asymetryczny dach, grafitowy tynk z białymi akcentami',
+    categoryLabel: en ? 'Single-Family Home' : 'Dom Jednorodzinny',
+    description: en ? 'Asymmetric roof, graphite plaster with white accents' : 'Asymetryczny dach, grafitowy tynk z białymi akcentami',
     area: '260 m²',
     image: '/images/projects/dom-ciemny-asymetryczny.jpg',
   },
@@ -80,15 +90,16 @@ const projects = [
     <!-- Header -->
     <div class="text-center max-w-3xl mx-auto mb-12">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-200 mb-6">
-        <span class="text-orange-600 text-sm font-semibold">Realizacje</span>
+        <span class="text-orange-600 text-sm font-semibold">{en ? 'Projects' : 'Realizacje'}</span>
       </div>
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-        Nasze najlepsze<br />
-        <span class="text-gradient">projekty</span>
+        {en ? 'Our best' : 'Nasze najlepsze'}<br />
+        <span class="text-gradient">{en ? 'projects' : 'projekty'}</span>
       </h2>
       <p class="mt-6 text-lg text-slate-500 leading-relaxed">
-        Zobacz wybrane realizacje elewacji i ociepleń dla klientów
-        indywidualnych oraz obiektów komercyjnych.
+        {en
+          ? 'See selected facade and insulation projects for individual clients and commercial buildings.'
+          : 'Zobacz wybrane realizacje elewacji i ociepleń dla klientów indywidualnych oraz obiektów komercyjnych.'}
       </p>
     </div>
 
@@ -98,19 +109,19 @@ const projects = [
         class="filter-btn active px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 bg-slate-900 text-white"
         data-filter="all"
       >
-        Wszystkie
+        {en ? 'All' : 'Wszystkie'}
       </button>
       <button
         class="filter-btn px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 bg-white text-slate-600 border border-slate-200 hover:border-slate-300"
         data-filter="dom"
       >
-        Dom Jednorodzinny
+        {en ? 'Single-Family Home' : 'Dom Jednorodzinny'}
       </button>
       <button
         class="filter-btn px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 bg-white text-slate-600 border border-slate-200 hover:border-slate-300"
         data-filter="komercyjny"
       >
-        Obiekt Komercyjny
+        {en ? 'Commercial Building' : 'Obiekt Komercyjny'}
       </button>
     </div>
 
@@ -162,10 +173,10 @@ const projects = [
     <!-- View all link -->
     <div class="text-center mt-12">
       <a
-        href="/realizacje"
+        href={localePath('/realizacje', locale)}
         class="inline-flex items-center gap-2 px-8 py-3.5 border-2 border-slate-900 text-slate-900 font-bold rounded-xl hover:bg-slate-900 hover:text-white transition-all duration-300"
       >
-        Zobacz wszystkie realizacje
+        {en ? 'View all projects' : 'Zobacz wszystkie realizacje'}
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
         </svg>

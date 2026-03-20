@@ -1,4 +1,13 @@
 ---
+import type { Locale } from '../i18n/config';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'pl' } = Astro.props;
+const en = locale === 'en';
+
 interface Texture {
   name: string;
   description: string;
@@ -9,33 +18,33 @@ interface Texture {
 
 const textures: Texture[] = [
   {
-    name: 'Beton Architektoniczny',
-    description: 'Surowy, industrialny charakter',
+    name: en ? 'Architectural Concrete' : 'Beton Architektoniczny',
+    description: en ? 'Raw, industrial character' : 'Surowy, industrialny charakter',
     image: '/images/textures/concrete.jpg',
   },
   {
-    name: 'Imitacja Drewna',
-    description: 'Ciepło naturalnego drewna',
+    name: en ? 'Wood Imitation' : 'Imitacja Drewna',
+    description: en ? 'Warmth of natural wood' : 'Ciepło naturalnego drewna',
     image: '/images/textures/wood.jpg',
   },
   {
-    name: 'Tynk Klasyczny',
-    description: 'Ponadczasowa elegancja',
+    name: en ? 'Classic Plaster' : 'Tynk Klasyczny',
+    description: en ? 'Timeless elegance' : 'Ponadczasowa elegancja',
     image: '/images/textures/plaster.jpg',
   },
   {
-    name: 'Kamień Naturalny',
-    description: 'Prestiż i trwałość',
+    name: en ? 'Natural Stone' : 'Kamień Naturalny',
+    description: en ? 'Prestige and durability' : 'Prestiż i trwałość',
     image: '/images/textures/stone.jpg',
   },
   {
-    name: 'Tynk Baranek',
-    description: 'Klasyczna faktura strukturalna',
+    name: en ? 'Lamb Texture Plaster' : 'Tynk Baranek',
+    description: en ? 'Classic structural texture' : 'Klasyczna faktura strukturalna',
     image: '/images/textures/baranek.jpg',
   },
   {
-    name: 'Panele HPL',
-    description: 'Nowoczesność i trwałość',
+    name: en ? 'HPL Panels' : 'Panele HPL',
+    description: en ? 'Modernity and durability' : 'Nowoczesność i trwałość',
     image: '/images/textures/hpl.jpg',
   },
 ];
@@ -47,17 +56,17 @@ const textures: Texture[] = [
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-end mb-16">
       <div>
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-200 mb-6">
-          <span class="text-orange-600 text-sm font-semibold">Materiały & Faktury</span>
+          <span class="text-orange-600 text-sm font-semibold">{en ? 'Materials & Textures' : 'Materiały & Faktury'}</span>
         </div>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-          Wybierz idealną<br />
-          <span class="text-gradient">fakturę elewacji</span>
+          {en ? 'Choose the perfect' : 'Wybierz idealną'}<br />
+          <span class="text-gradient">{en ? 'facade texture' : 'fakturę elewacji'}</span>
         </h2>
       </div>
       <p class="text-lg text-slate-500 leading-relaxed">
-        Oferujemy szeroki wybór faktur i wykończeń elewacji. Od surowego betonu
-        architektonicznego po ciepłą imitację drewna — dopasujemy materiał do
-        charakteru Twojego budynku.
+        {en
+          ? 'We offer a wide selection of facade textures and finishes. From raw architectural concrete to warm wood imitation — we will match the material to the character of your building.'
+          : 'Oferujemy szeroki wybór faktur i wykończeń elewacji. Od surowego betonu architektonicznego po ciepłą imitację drewna — dopasujemy materiał do charakteru Twojego budynku.'}
       </p>
     </div>
 
@@ -96,7 +105,7 @@ const textures: Texture[] = [
 
     <!-- Selected texture display -->
     <div id="texture-info" class="mt-8 text-center">
-      <p class="text-slate-400 text-sm">Kliknij na fakturę, aby zobaczyć szczegóły</p>
+      <p class="text-slate-400 text-sm">{en ? 'Click on a texture to see details' : 'Kliknij na fakturę, aby zobaczyć szczegóły'}</p>
     </div>
   </div>
 </section>
