@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kamil-elewacje.pl/sitemap-index.xml
+Sitemap: https://www.elewacjezklasa.pl/sitemap-index.xml
