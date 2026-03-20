@@ -118,6 +118,21 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
 
+          <div class="mb-6">
+            <label for="service-type" class="block text-sm font-semibold text-slate-700 mb-2">Rodzaj usługi *</label>
+            <select id="service-type" name="Rodzaj usługi" required
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-red-500/50 focus:border-red-500 transition-all">
+              <option value="">Wybierz usługę...</option>
+              <option value="Ocieplenie (ETICS)">Ocieplenie (ETICS)</option>
+              <option value="Elewacja wentylowana">Elewacja wentylowana</option>
+              <option value="Tynki dekoracyjne">Tynki dekoracyjne</option>
+              <option value="Mycie i czyszczenie elewacji">Mycie i czyszczenie elewacji</option>
+              <option value="Projekt komercyjny">Projekt komercyjny</option>
+              <option value="Doradztwo i wizualizacja 3D">Doradztwo i wizualizacja 3D</option>
+              <option value="Inne">Inne</option>
+            </select>
+          </div>
+
           <div class="grid sm:grid-cols-3 gap-5">
             <div>
               <label for="location" class="block text-sm font-semibold text-slate-700 mb-2">Lokalizacja *</label>
