@@ -1,0 +1,62 @@
+---
+interface Partner {
+  name: string;
+  logo?: string;
+  weight?: string;
+  tracking?: string;
+}
+
+const partners: Partner[] = [
+  { name: 'Atlas', logo: '/images/partners/atlas-new.png' },
+  { name: 'Weber', logo: '/images/partners/weber.png' },
+  { name: 'Baumit', logo: '/images/partners/baumit.svg' },
+  { name: 'Caparol', logo: '/images/partners/caparol.svg' },
+  { name: 'Ceresit', logo: '/images/partners/ceresit-new.png' },
+  { name: 'Knauf', logo: '/images/partners/knauf.png' },
+  { name: 'Rockwool', logo: '/images/partners/rockwool.png' },
+  { name: 'STO', weight: '900', tracking: '0.12em' },
+  { name: 'Bostik', logo: '/images/partners/bostik.png' },
+  { name: 'EJOT', logo: '/images/partners/ejot.png' },
+  { name: 'Rawlplug', logo: '/images/partners/rawlplug.png' },
+  { name: 'Trespa', logo: '/images/partners/trespa.webp' },
+  { name: 'Isover', logo: '/images/partners/isover.png' },
+  { name: 'Termo Organika', logo: '/images/partners/termo-organika.png' },
+];
+---
+
+<section class="py-16 lg:py-20 bg-white border-t border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <p class="text-sm font-bold uppercase tracking-[0.2em] text-slate-400">
+        Zaufani partnerzy i producenci
+      </p>
+    </div>
+
+    <!-- Logo grid — 2 rows -->
+    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-x-10 gap-y-10 items-center justify-items-center">
+      {partners.map((partner) => (
+        <div
+          class="group flex items-center justify-center h-10 sm:h-12 px-2 opacity-30 hover:opacity-90 transition-all duration-500 cursor-default"
+          title={partner.name}
+        >
+          {partner.logo ? (
+            <img
+              src={partner.logo}
+              alt={partner.name}
+              class="h-full w-auto max-w-[120px] object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+              loading="lazy"
+            />
+          ) : (
+            <span
+              class="text-slate-800 text-base sm:text-lg md:text-xl whitespace-nowrap select-none uppercase"
+              style={`font-weight: ${partner.weight || '700'}; letter-spacing: ${partner.tracking || '0.02em'};`}
+            >
+              {partner.name}
+            </span>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

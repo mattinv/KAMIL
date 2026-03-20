@@ -14,6 +14,17 @@
   --color-slate-100: #e8ecf0;
   --color-slate-50: #f8fafc;
 
+  /* Primary: Red (logo door color) */
+  --color-red-700: #b91c1c;
+  --color-red-600: #dc2626;
+  --color-red-500: #ef4444;
+  --color-red-400: #f87171;
+  --color-red-300: #fca5a5;
+  --color-red-200: #fecaca;
+  --color-red-100: #fee2e2;
+  --color-red-50: #fef2f2;
+
+  /* Secondary: Orange (supporting accents) */
   --color-orange-700: #c2410c;
   --color-orange-600: #ea580c;
   --color-orange-500: #f97316;
@@ -41,7 +52,7 @@
   }
 
   ::selection {
-    background-color: var(--color-orange-500);
+    background-color: var(--color-red-600);
     color: var(--color-white);
   }
 }
@@ -62,7 +73,7 @@
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, var(--color-orange-400), var(--color-orange-600));
+    background: linear-gradient(135deg, var(--color-red-500), var(--color-red-700));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
