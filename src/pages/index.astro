@@ -8,11 +8,39 @@ import Portfolio from '../components/Portfolio.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
 import Partners from '../components/Partners.astro';
 import Contact from '../components/Contact.astro';
+
+const faqItems = [
+  {
+    q: 'Ile kosztuje ocieplenie domu w Krakowie w 2026 roku?',
+    a: 'Koszt ocieplenia domu jednorodzinnego w Krakowie zależy od powierzchni elewacji, rodzaju izolacji i wykończenia. Orientacyjne ceny: styropian grafitowy z tynkiem silikonowym od 180–250 zł/m², wełna mineralna od 220–300 zł/m². Dla domu o powierzchni elewacji 200 m² oznacza to 36 000–60 000 zł. Przygotowujemy bezpłatne, szczegółowe wyceny na podstawie wizji lokalnej.'
+  },
+  {
+    q: 'Styropian grafitowy czy wełna mineralna — co wybrać na ocieplenie?',
+    a: 'Styropian grafitowy (λ = 0,031) jest tańszy i lżejszy — idealny dla większości domów jednorodzinnych. Wełna mineralna (klasa ogniowa A1) jest niepalna i paroprzepuszczalna — lepsza dla budynków drewnianych, wielorodzinnych i wszędzie tam, gdzie priorytetem jest bezpieczeństwo pożarowe. Pomagamy dobrać optymalny materiał do Twojego budynku.'
+  },
+  {
+    q: 'Czy pomagacie z dotacją z programu Czyste Powietrze?',
+    a: 'Tak — jako autoryzowany partner programu Czyste Powietrze oferujemy kompleksową pomoc: od sprawdzenia uprawnień, przez wypełnienie wniosku, po rozliczenie dotacji po zakończeniu prac. W 2026 roku dotacja na ocieplenie wynosi do 135 000 zł w zależności od poziomu dofinansowania.'
+  },
+  {
+    q: 'Jak długo trwa ocieplenie i elewacja domu jednorodzinnego?',
+    a: 'Standardowe ocieplenie domu jednorodzinnego (150–250 m² elewacji) trwa 3–5 tygodni, w zależności od pogody i złożoności projektu. Przed rozpoczęciem prac ustalamy szczegółowy harmonogram i dotrzymujemy ustalonych terminów.'
+  },
+  {
+    q: 'Czy można robić elewację zimą?',
+    a: 'Prace elewacyjne w systemie ETICS wymagają temperatury powyżej +5°C. Sezon elewacyjny w Krakowie trwa zwykle od marca do listopada. W przypadku łagodnej zimy lub przy zastosowaniu osłon i nagrzewnic możliwe jest prowadzenie prac również w miesiącach zimowych — oceniamy to indywidualnie.'
+  },
+  {
+    q: 'Jaki tynk na elewację jest najtrwalszy?',
+    a: 'Tynk silikonowy to najczęściej wybierane i najbardziej trwałe wykończenie elewacji. Jest samoczyszczący (hydrofobowy), odporny na glony i grzyby, a jego trwałość to 20–30 lat. Dla budynków w centrum miasta rekomendujemy również tynk silikatowo-silikonowy, który łączy paroprzepuszczalność z samoczyszczeniem.'
+  },
+];
 ---
 
 <Layout
   title="Profesjonalne Ocieplenia i Elewacje Kraków | Elewacje z Klasą"
   description="Profesjonalne elewacje i termomodernizacja w Małopolsce. Systemy ETICS, elewacje wentylowane, projekty komercyjne. Autoryzowany partner Czyste Powietrze. Ponad 15 lat doświadczenia."
+  faqItems={faqItems}
 >
   <Hero />
   <Stats />
@@ -234,32 +262,7 @@ import Contact from '../components/Contact.astro';
         </h2>
       </div>
       <div class="space-y-4">
-        {[
-          {
-            q: 'Ile kosztuje ocieplenie domu w Krakowie w 2026 roku?',
-            a: 'Koszt ocieplenia domu jednorodzinnego w Krakowie zależy od powierzchni elewacji, rodzaju izolacji i wykończenia. Orientacyjne ceny: styropian grafitowy z tynkiem silikonowym od 180–250 zł/m², wełna mineralna od 220–300 zł/m². Dla domu o powierzchni elewacji 200 m² oznacza to 36 000–60 000 zł. Przygotowujemy bezpłatne, szczegółowe wyceny na podstawie wizji lokalnej.'
-          },
-          {
-            q: 'Styropian grafitowy czy wełna mineralna — co wybrać na ocieplenie?',
-            a: 'Styropian grafitowy (λ = 0,031) jest tańszy i lżejszy — idealny dla większości domów jednorodzinnych. Wełna mineralna (klasa ogniowa A1) jest niepalna i paroprzepuszczalna — lepsza dla budynków drewnianych, wielorodzinnych i wszędzie tam, gdzie priorytetem jest bezpieczeństwo pożarowe. Pomagamy dobrać optymalny materiał do Twojego budynku.'
-          },
-          {
-            q: 'Czy pomagacie z dotacją z programu Czyste Powietrze?',
-            a: 'Tak — jako autoryzowany partner programu Czyste Powietrze oferujemy kompleksową pomoc: od sprawdzenia uprawnień, przez wypełnienie wniosku, po rozliczenie dotacji po zakończeniu prac. W 2026 roku dotacja na ocieplenie wynosi do 135 000 zł w zależności od poziomu dofinansowania.'
-          },
-          {
-            q: 'Jak długo trwa ocieplenie i elewacja domu jednorodzinnego?',
-            a: 'Standardowe ocieplenie domu jednorodzinnego (150–250 m² elewacji) trwa 3–5 tygodni, w zależności od pogody i złożoności projektu. Przed rozpoczęciem prac ustalamy szczegółowy harmonogram i dotrzymujemy ustalonych terminów.'
-          },
-          {
-            q: 'Czy można robić elewację zimą?',
-            a: 'Prace elewacyjne w systemie ETICS wymagają temperatury powyżej +5°C. Sezon elewacyjny w Krakowie trwa zwykle od marca do listopada. W przypadku łagodnej zimy lub przy zastosowaniu osłon i nagrzewnic możliwe jest prowadzenie prac również w miesiącach zimowych — oceniamy to indywidualnie.'
-          },
-          {
-            q: 'Jaki tynk na elewację jest najtrwalszy?',
-            a: 'Tynk silikonowy to najczęściej wybierane i najbardziej trwałe wykończenie elewacji. Jest samoczyszczący (hydrofobowy), odporny na glony i grzyby, a jego trwałość to 20–30 lat. Dla budynków w centrum miasta rekomendujemy również tynk silikatowo-silikonowy, który łączy paroprzepuszczalność z samoczyszczeniem.'
-          },
-        ].map((item) => (
+        {faqItems.map((item) => (
           <details class="group bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden">
             <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none">
               <h3 class="text-base font-semibold text-slate-900 group-open:text-red-600 transition-colors">{item.q}</h3>

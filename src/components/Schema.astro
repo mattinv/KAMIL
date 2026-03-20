@@ -7,11 +7,12 @@ interface Props {
     date: string;
     url: string;
   };
+  faqItems?: { q: string; a: string }[];
 }
 
-const { type = 'home', articleData } = Astro.props;
+const { type = 'home', articleData, faqItems } = Astro.props;
 
-const baseUrl = 'https://kamil-elewacje.pl';
+const baseUrl = 'https://www.elewacjezklasa.pl';
 
 const organization = {
   '@type': 'LocalBusiness',
@@ -156,6 +157,20 @@ const articleSchema = articleData ? {
     '@id': articleData.url,
   },
 } : null;
+
+// FAQPage schema for pages with FAQ sections
+const faqSchema = faqItems && faqItems.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+} : null;
 ---
 
 {type === 'home' && (
@@ -168,6 +183,10 @@ const articleSchema = articleData ? {
 
 {type === 'article' && articleSchema && (
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+)}
+
+{faqSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 )}
 
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
