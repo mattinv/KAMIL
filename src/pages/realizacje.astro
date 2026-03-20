@@ -5,12 +5,21 @@ import { getCollection } from 'astro:content';
 const allProjects = await getCollection('projects');
 const sortedProjects = allProjects.sort((a, b) => b.data.year - a.data.year);
 
+const projectItems = sortedProjects.map((p) => ({
+  title: p.data.title,
+  description: p.data.description,
+  image: p.data.image,
+  location: p.data.location,
+  year: p.data.year,
+  slug: p.id,
+}));
 ---
 
 <Layout
   title="Realizacje Elewacji — Przed i Po"
   description="Zobacz nasze zrealizowane projekty elewacji i ociepleń — domy jednorodzinne, budynki wielorodzinne i obiekty komercyjne w całej Polsce."
   schemaType="projects"
+  projectItems={projectItems}
 >
   <!-- Page Hero -->
   <section class="relative pt-32 pb-20 bg-slate-900 overflow-hidden">
