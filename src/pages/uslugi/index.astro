@@ -1,6 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Partners from '../components/Partners.astro';
+import Layout from '../../layouts/Layout.astro';
+import Partners from '../../components/Partners.astro';
 
 const services = [
   {
@@ -216,6 +216,46 @@ const iconPaths: Record<string, string> = {
   ))}
 
   <Partners />
+
+  <!-- Detailed Service Pages -->
+  <section class="section-padding bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-sm font-semibold text-orange-500 uppercase tracking-wider mb-2">Dowiedz się więcej</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          Szczegółowe <span class="text-gradient">Poradniki</span>
+        </h2>
+        <p class="mt-4 text-slate-500 max-w-2xl mx-auto">
+          Przeczytaj szczegółowe opisy naszych usług — materiały, proces, koszty i najczęściej zadawane pytania.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { href: '/uslugi/ocieplenie-domu-krakow', title: 'Ocieplenie Domu', desc: 'Systemy ETICS, styropian, wełna — kompletny poradnik ocieplania domu.' },
+          { href: '/uslugi/elewacje-krakow', title: 'Elewacje Kraków', desc: 'Wszystkie usługi elewacyjne — od ocieplenia po tynki dekoracyjne.' },
+          { href: '/uslugi/termomodernizacja-malopolska', title: 'Termomodernizacja', desc: 'Kompleksowa modernizacja energetyczna budynków w Małopolsce.' },
+          { href: '/uslugi/elewacje-wentylowane-krakow', title: 'Elewacje Wentylowane', desc: 'Nowoczesne fasady HPL, włókno-cementowe i aluminiowe.' },
+          { href: '/uslugi/tynk-silikonowy-elewacja', title: 'Tynk Silikonowy', desc: 'Samoczyszczący tynk silikonowy — trwałe wykończenie elewacji.' },
+          { href: '/uslugi/renowacja-elewacji-kamienic', title: 'Renowacja Kamienic', desc: 'Odnowa zabytkowych fasad z uzgodnieniami konserwatorskimi.' },
+          { href: '/uslugi/ocieplenie-styropianem-grafitowym', title: 'Styropian Grafitowy', desc: 'O 20% lepsza izolacja — cieńsza warstwa, lepszy efekt.' },
+          { href: '/uslugi/ocieplenie-welna-mineralna', title: 'Wełna Mineralna', desc: 'Niepalna izolacja klasy A1 — paroprzepuszczalna i akustyczna.' },
+          { href: '/uslugi/wizualizacja-elewacji-3d', title: 'Wizualizacja 3D', desc: 'Zobacz efekt końcowy przed rozpoczęciem prac elewacyjnych.' },
+          { href: '/uslugi/czyste-powietrze-elewacja', title: 'Czyste Powietrze', desc: 'Dotacja do 135 000 zł na ocieplenie — pomagamy od wniosku po rozliczenie.' },
+        ].map((item) => (
+          <a href={item.href} class="group block p-6 rounded-2xl border border-slate-100 hover:border-red-200 bg-slate-50 hover:bg-red-50/50 transition-all duration-300">
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-red-600 transition-colors">{item.title}</h3>
+            <p class="mt-2 text-sm text-slate-500">{item.desc}</p>
+            <span class="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-red-600">
+              Czytaj więcej
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- CTA -->
   <section class="section-padding bg-slate-900 text-center">

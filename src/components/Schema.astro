@@ -1,9 +1,15 @@
 ---
 interface Props {
-  type?: 'home' | 'services' | 'projects' | 'about' | 'contact';
+  type?: 'home' | 'services' | 'projects' | 'about' | 'contact' | 'blog' | 'article';
+  articleData?: {
+    title: string;
+    description: string;
+    date: string;
+    url: string;
+  };
 }
 
-const { type = 'home' } = Astro.props;
+const { type = 'home', articleData } = Astro.props;
 
 const baseUrl = 'https://kamil-elewacje.pl';
 
@@ -88,6 +94,11 @@ const breadcrumbMap: Record<string, { name: string; url: string }[]> = {
   projects: [{ name: 'Realizacje', url: `${baseUrl}/realizacje` }],
   about: [{ name: 'O nas', url: `${baseUrl}/o-nas` }],
   contact: [{ name: 'Kontakt', url: `${baseUrl}/kontakt` }],
+  blog: [{ name: 'Poradnik', url: `${baseUrl}/poradnik` }],
+  article: [
+    { name: 'Poradnik', url: `${baseUrl}/poradnik` },
+    ...(articleData ? [{ name: articleData.title, url: articleData.url }] : []),
+  ],
 };
 
 const breadcrumbItems = [
@@ -117,6 +128,34 @@ const servicesSchema = {
   '@context': 'https://schema.org',
   '@graph': services,
 };
+
+// Article page gets Article schema
+const articleSchema = articleData ? {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: articleData.title,
+  description: articleData.description,
+  datePublished: articleData.date,
+  dateModified: articleData.date,
+  author: {
+    '@type': 'Organization',
+    '@id': `${baseUrl}/#organization`,
+    name: 'Elewacje z Klasą',
+  },
+  publisher: {
+    '@type': 'Organization',
+    '@id': `${baseUrl}/#organization`,
+    name: 'Elewacje z Klasą',
+    logo: {
+      '@type': 'ImageObject',
+      url: `${baseUrl}/logo.png`,
+    },
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': articleData.url,
+  },
+} : null;
 ---
 
 {type === 'home' && (
@@ -125,6 +164,10 @@ const servicesSchema = {
 
 {type === 'services' && (
   <script type="application/ld+json" set:html={JSON.stringify(servicesSchema)} />
+)}
+
+{type === 'article' && articleSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 )}
 
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

@@ -17,4 +17,17 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { projects };
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.string(),
+    category: z.enum(['ocieplenia', 'elewacje', 'materialy', 'dotacje', 'porady']),
+    categoryLabel: z.string(),
+    readingTime: z.string(),
+    featured: z.boolean().default(false),
+  }),
+});
+
+export const collections = { projects, blog };
