@@ -1,0 +1,91 @@
+---
+const services = [
+  {
+    icon: 'layers',
+    title: 'Systemy Ociepleń (ETICS)',
+    description: 'Kompleksowe ocieplenia budynków metodą lekką-mokrą. Stosujemy certyfikowane systemy Weber, Baumit i Caparol z pełną gwarancją producenta.',
+    features: ['Styropian EPS / XPS', 'Wełna mineralna', 'Grafitowy styropian', 'Klasa A+ energetyczna'],
+    accent: 'from-orange-500 to-orange-500',
+  },
+  {
+    icon: 'grid',
+    title: 'Elewacje Wentylowane',
+    description: 'Nowoczesne fasady wentylowane z płyt HPL, włókno-cementowych oraz paneli aluminiowych. Trwałość ponad 50 lat.',
+    features: ['Płyty HPL / Trespa', 'Panele kompozytowe', 'Okładziny ceramiczne', 'Systemy podkonstrukcji'],
+    accent: 'from-slate-700 to-slate-800',
+  },
+  {
+    icon: 'building',
+    title: 'Projekty Komercyjne',
+    description: 'Realizacje dla deweloperów, inwestorów i sektora publicznego. Biurowce, hale, centra handlowe i budynki wielorodzinne.',
+    features: ['Budynki wielorodzinne', 'Obiekty biurowe', 'Hale przemysłowe', 'Obiekty użyteczności publicznej'],
+    accent: 'from-orange-500 to-orange-600',
+  },
+];
+
+const iconPaths: Record<string, string> = {
+  layers: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',
+  grid: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
+  building: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+};
+---
+
+<section id="uslugi" class="section-padding bg-slate-50">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-200 mb-6">
+        <span class="text-orange-600 text-sm font-semibold">Nasze Usługi</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+        Kompleksowe rozwiązania<br />
+        <span class="text-gradient">fasadowe</span>
+      </h2>
+      <p class="mt-6 text-lg text-slate-500 leading-relaxed">
+        Od projektu po realizację — zapewniamy pełen zakres usług związanych
+        z ociepleniem i wykończeniem elewacji budynków.
+      </p>
+    </div>
+
+    <!-- Service Cards Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service, index) => (
+        <div class="group relative bg-white rounded-2xl border border-slate-100 p-8 hover:shadow-2xl hover:shadow-slate-900/5 transition-all duration-500 hover:-translate-y-1 overflow-hidden">
+          <!-- Hover gradient -->
+          <div class={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.accent} transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`}></div>
+
+          <!-- Icon -->
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-slate-900 to-slate-700 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-7 h-7 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[service.icon]} />
+            </svg>
+          </div>
+
+          <!-- Content -->
+          <h3 class="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
+          <p class="text-slate-500 leading-relaxed mb-6">{service.description}</p>
+
+          <!-- Features list -->
+          <ul class="space-y-2.5">
+            {service.features.map((feature) => (
+              <li class="flex items-center gap-3 text-sm text-slate-600">
+                <svg class="w-4 h-4 text-orange-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          <!-- Arrow link -->
+          <div class="mt-8 flex items-center gap-2 text-orange-500 font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+            <span>Dowiedz się więcej</span>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

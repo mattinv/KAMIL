@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --color-slate-950: #0a0f1a;
+  --color-slate-900: #1e293b;
+  --color-slate-800: #2d3a4f;
+  --color-slate-700: #3d4f6a;
+  --color-slate-600: #556885;
+  --color-slate-400: #94a3b8;
+  --color-slate-300: #b0bec5;
+  --color-slate-200: #d1d9e0;
+  --color-slate-100: #e8ecf0;
+  --color-slate-50: #f8fafc;
+
+  --color-orange-700: #c2410c;
+  --color-orange-600: #ea580c;
+  --color-orange-500: #f97316;
+  --color-orange-400: #fb923c;
+  --color-orange-300: #fdba74;
+  --color-orange-200: #fed7aa;
+  --color-orange-100: #ffedd5;
+  --color-orange-50: #fff7ed;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-slate-900);
+    background-color: var(--color-slate-50);
+  }
+
+  ::selection {
+    background-color: var(--color-orange-500);
+    color: var(--color-white);
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .glass-dark {
+    background: rgba(10, 15, 26, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-orange-400), var(--color-orange-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-padding {
+    padding-inline: 1.5rem;
+    padding-block: 5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      padding-inline: 2rem;
+      padding-block: 7rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding-inline: 4rem;
+    }
+  }
+}

@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<Layout
+  title={project.data.title}
+  description={project.data.description}
+  type="article"
+>
+  <!-- Hero -->
+  <section class="relative pt-32 pb-16 bg-slate-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+    <div class="relative max-w-4xl mx-auto px-6 lg:px-8">
+      <a href="/realizacje" class="inline-flex items-center gap-2 text-slate-400 hover:text-orange-400 text-sm font-medium mb-8 transition-colors">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+        </svg>
+        Powrót do realizacji
+      </a>
+
+      <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-semibold rounded-lg">
+          {project.data.categoryLabel}
+        </span>
+        <span class="px-3 py-1 bg-white/5 border border-white/10 text-slate-300 text-xs font-semibold rounded-lg">
+          {project.data.year}
+        </span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+        {project.data.title}
+      </h1>
+      <p class="mt-4 text-lg text-slate-400 leading-relaxed max-w-2xl">
+        {project.data.description}
+      </p>
+
+      <!-- Meta -->
+      <div class="mt-8 flex flex-wrap gap-6 text-sm">
+        <div class="flex items-center gap-2 text-slate-300">
+          <svg class="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          {project.data.location}
+        </div>
+        <div class="flex items-center gap-2 text-slate-300">
+          <svg class="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+          </svg>
+          {project.data.area}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section-padding bg-white">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <article class="prose prose-slate prose-lg max-w-none prose-headings:font-extrabold prose-headings:tracking-tight prose-a:text-orange-500 prose-strong:text-slate-900">
+        <Content />
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-padding bg-slate-50 text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+        Podoba Ci się ten projekt?
+      </h2>
+      <p class="mt-3 text-slate-500">
+        Skontaktuj się z nami, aby omówić Twój projekt.
+      </p>
+      <a
+        href="/#kontakt"
+        class="inline-flex items-center gap-2 mt-6 px-8 py-3.5 bg-orange-500 hover:bg-orange-400 text-white font-bold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/25"
+      >
+        Darmowa Wycena
+      </a>
+    </div>
+  </section>
+</Layout>
