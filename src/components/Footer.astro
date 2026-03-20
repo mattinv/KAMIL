@@ -3,16 +3,16 @@ const currentYear = new Date().getFullYear();
 
 const footerLinks = {
   uslugi: [
-    { label: 'Systemy Ociepleń ETICS', href: '#uslugi' },
-    { label: 'Elewacje Wentylowane', href: '#uslugi' },
-    { label: 'Projekty Komercyjne', href: '#uslugi' },
-    { label: 'Audyt Energetyczny', href: '#kontakt' },
+    { label: 'Systemy Ociepleń ETICS', href: '/uslugi' },
+    { label: 'Elewacje Wentylowane', href: '/uslugi/elewacje-wentylowane-krakow' },
+    { label: 'Projekty Komercyjne', href: '/uslugi' },
+    { label: 'Audyt Energetyczny', href: '/kontakt' },
   ],
   firma: [
-    { label: 'O nas', href: '#o-nas' },
+    { label: 'O nas', href: '/o-nas' },
     { label: 'Realizacje', href: '/realizacje' },
-    { label: 'Certyfikaty', href: '#o-nas' },
-    { label: 'Kariera', href: '#kontakt' },
+    { label: 'Poradnik', href: '/poradnik' },
+    { label: 'Kontakt', href: '/kontakt' },
   ],
 };
 ---
@@ -91,7 +91,7 @@ const footerLinks = {
           Otrzymaj bezpłatną wycenę ocieplenia lub elewacji w ciągu 24 godzin.
         </p>
         <a
-          href="#kontakt"
+          href="/kontakt"
           class="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-semibold text-sm rounded-xl transition-all duration-300"
         >
           Skontaktuj się
