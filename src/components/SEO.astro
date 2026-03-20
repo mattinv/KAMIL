@@ -1,10 +1,15 @@
 ---
+import type { Locale } from '../i18n/config';
+import { getAlternatePath } from '../i18n/config';
+
 interface Props {
   title: string;
   description: string;
   image?: string;
   canonicalURL?: string;
   type?: string;
+  locale?: Locale;
+  alternateUrl?: string;
 }
 
 const {
@@ -13,12 +18,25 @@ const {
   image = '/og-image.jpg',
   canonicalURL = Astro.url.href,
   type = 'website',
+  locale = 'pl',
+  alternateUrl,
 } = Astro.props;
 
 const siteName = 'Elewacje z Klasą';
-const fullTitle = title === 'Strona główna'
-  ? `${siteName} | Profesjonalne Ocieplenia i Elewacje Kraków, Małopolska`
-  : `${title} | ${siteName}`;
+const baseUrl = 'https://www.elewacjezklasa.pl';
+const fullTitle = title.includes(siteName)
+  ? title
+  : title === 'Strona główna' || title === 'Home'
+    ? `${siteName} | ${locale === 'en' ? 'Professional Insulation & Facades Kraków, Poland' : 'Profesjonalne Ocieplenia i Elewacje Kraków, Małopolska'}`
+    : `${title} | ${siteName}`;
+
+const ogLocale = locale === 'en' ? 'en_US' : 'pl_PL';
+const altLocale = locale === 'en' ? 'pl' : 'en';
+const currentPath = new URL(canonicalURL).pathname;
+const altPath = alternateUrl || getAlternatePath(currentPath, altLocale as Locale);
+const altHref = `${baseUrl}${altPath}`;
+const plHref = locale === 'pl' ? canonicalURL : altHref;
+const enHref = locale === 'en' ? canonicalURL : altHref;
 ---
 
 <meta charset="utf-8" />
@@ -31,7 +49,10 @@ const fullTitle = title === 'Strona główna'
 <meta name="robots" content="index, follow" />
 
 <!-- Language -->
-<meta http-equiv="content-language" content="pl" />
+<meta http-equiv="content-language" content={locale} />
+<link rel="alternate" hreflang="pl" href={plHref} />
+<link rel="alternate" hreflang="en" href={enHref} />
+<link rel="alternate" hreflang="x-default" href={plHref} />
 
 <!-- OpenGraph -->
 <meta property="og:type" content={type} />
@@ -40,7 +61,7 @@ const fullTitle = title === 'Strona główna'
 <meta property="og:image" content={image} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:site_name" content={siteName} />
-<meta property="og:locale" content="pl_PL" />
+<meta property="og:locale" content={ogLocale} />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />

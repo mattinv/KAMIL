@@ -1,0 +1,45 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="Thermal Modernization Malopolska — Comprehensive Energy Upgrade" description="Building thermal modernization in Malopolska — wall insulation, window replacement, energy audit. Clean Air program subsidies. Free quote." schemaType="services" locale="en">
+  <section class="bg-slate-900 text-white section-padding">
+    <div class="max-w-7xl mx-auto">
+      <nav class="text-sm text-slate-400 mb-8" aria-label="Breadcrumb"><ol class="flex items-center gap-2"><li><a href="/en" class="hover:text-white transition-colors">Home</a></li><li class="text-slate-600">/</li><li><a href="/en/services" class="hover:text-white transition-colors">Services</a></li><li class="text-slate-600">/</li><li class="text-orange-400">Thermal Modernization Malopolska</li></ol></nav>
+      <div class="max-w-4xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">Thermal Modernization <span class="text-gradient">in Malopolska</span></h1>
+        <p class="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">Comprehensive energy modernization of buildings — wall insulation, window replacement, energy audit. We help obtain subsidies from the Clean Air and Stop Smog programs.</p>
+        <div class="flex flex-wrap gap-4"><a href="/en/contact" class="bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl px-8 py-4 transition-colors">Free quote</a><a href="tel:+48515156233" class="border border-slate-600 hover:border-slate-400 text-white font-semibold rounded-xl px-8 py-4 transition-colors">Call now</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white section-padding">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">What is thermal modernization?</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <p class="text-lg text-slate-700 mb-4 leading-relaxed">Thermal modernization is a comprehensive process of improving a building's energy efficiency, including insulating external walls, roof and attic, replacing windows and doors, and often modernizing the heating system. The goal is a dramatic reduction in energy consumption and building operating costs.</p>
+          <p class="text-lg text-slate-700 mb-4 leading-relaxed">In Malopolska, thermal modernization is particularly important due to the anti-smog resolution requiring replacement of old boilers and emission reduction. Well-executed thermal modernization can reduce heat demand by 60-70%, directly translating to lower smog emissions and lower bills.</p>
+          <p class="text-lg text-slate-700 leading-relaxed">The Polish government supports thermal modernization through subsidy programs — <strong>Clean Air (Czyste Powietrze)</strong>, <strong>Stop Smog</strong>, and <strong>Warm Housing (Cieple Mieszkanie)</strong>.</p>
+        </div>
+        <div class="bg-slate-50 rounded-2xl p-8">
+          <h3 class="text-xl font-extrabold mb-4 text-slate-900">Scope of thermal modernization</h3>
+          <ul class="space-y-3">
+            {['External wall insulation (ETICS or ventilated)', 'Roof and attic insulation', 'Window and door replacement', 'Heating system modernization', 'Mechanical ventilation with heat recovery', 'Renewable energy (heat pumps, photovoltaics)', 'Energy audit and certificate'].map(item => (
+              <li class="flex items-start gap-3"><span class="text-orange-500 font-bold text-lg mt-0.5">&#10003;</span><span class="text-slate-700">{item}</span></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-900 text-white section-padding">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Plan your <span class="text-gradient">thermal modernization</span> with a subsidy</h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">Contact us — we will help plan your thermal modernization and obtain Clean Air program funding. Free quote and consultation.</p>
+      <div class="flex flex-wrap justify-center gap-4"><a href="/en/contact" class="bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl px-8 py-4 transition-colors text-lg">Order free quote</a><a href="tel:+48515156233" class="border border-slate-600 hover:border-slate-400 text-white font-semibold rounded-xl px-8 py-4 transition-colors text-lg">Call: 515-156-233</a></div>
+    </div>
+  </section>
+</Layout>

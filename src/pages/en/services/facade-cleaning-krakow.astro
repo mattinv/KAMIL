@@ -1,0 +1,67 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="Facade Cleaning Krakow — Professional Facade Washing" description="Professional facade cleaning in Krakow. Pressure washing, chemical cleaning, graffiti removal. Free quote within 24h." schemaType="services" locale="en">
+  <section class="bg-slate-900 text-white section-padding">
+    <div class="max-w-7xl mx-auto">
+      <nav class="text-sm text-slate-400 mb-8" aria-label="Breadcrumb"><ol class="flex items-center gap-2"><li><a href="/en" class="hover:text-white transition-colors">Home</a></li><li class="text-slate-600">/</li><li><a href="/en/services" class="hover:text-white transition-colors">Services</a></li><li class="text-slate-600">/</li><li class="text-orange-400">Facade Cleaning</li></ol></nav>
+      <div class="max-w-4xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">Facade Cleaning <span class="text-gradient">in Krakow</span></h1>
+        <p class="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">Professional cleaning of residential and commercial building facades. We restore the original look without costly renovation.</p>
+        <div class="flex flex-wrap gap-4"><a href="/en/contact" class="bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl px-8 py-4 transition-colors">Free quote</a><a href="tel:+48515156233" class="border border-slate-600 hover:border-slate-400 text-white font-semibold rounded-xl px-8 py-4 transition-colors">Call us</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white section-padding">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Our facade cleaning services</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <p class="text-lg text-slate-700 mb-4 leading-relaxed">Over time, every facade accumulates dirt — biological contamination (algae, moss, lichen, fungi), atmospheric deposits, urban pollution, and sometimes graffiti. Professional cleaning can restore the facade to near-original condition without the cost of a full renovation.</p>
+          <p class="text-lg text-slate-700 mb-4 leading-relaxed">We use various cleaning methods depending on the facade type and contamination: pressure washing for durable surfaces, gentle chemical cleaning for delicate plasters, steam cleaning for historic facades, and specialized products for graffiti removal.</p>
+          <p class="text-lg text-slate-700 leading-relaxed">After cleaning, we recommend hydrophobic impregnation that protects the facade from future contamination and moisture penetration. This treatment extends the time between cleanings and preserves the facade's appearance for years.</p>
+        </div>
+        <div class="bg-slate-50 rounded-2xl p-8">
+          <h3 class="text-xl font-extrabold mb-4 text-slate-900">Services we offer</h3>
+          <ul class="space-y-3">
+            {['Pressure washing (Karcher professional)', 'Algae, moss, and lichen removal', 'Chemical cleaning of stubborn contamination', 'Graffiti and vandalism removal', 'Hydrophobic impregnation after washing', 'Multi-family building and hall cleaning', 'Historic facade gentle cleaning', 'Post-construction cleaning'].map(item => (
+              <li class="flex items-start gap-3"><span class="text-orange-500 font-bold text-lg mt-0.5">&#10003;</span><span class="text-slate-700">{item}</span></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-50 section-padding">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-8">Cleaning process</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { step: '01', title: 'Facade assessment', desc: 'We evaluate contamination type, facade material, and condition to select the optimal cleaning method.' },
+          { step: '02', title: 'Method selection', desc: 'Pressure washing, chemical treatment, steam cleaning, or combination — each facade requires a tailored approach.' },
+          { step: '03', title: 'Area protection', desc: 'We protect windows, doors, plants, and surrounding areas from water and cleaning agents.' },
+          { step: '04', title: 'Facade cleaning', desc: 'Professional cleaning using selected methods, adjusting pressure and chemicals to the surface type.' },
+          { step: '05', title: 'Hydrophobic treatment', desc: 'Application of protective impregnation that repels water and prevents future biological growth.' },
+          { step: '06', title: 'Inspection', desc: 'Final quality check to ensure complete contamination removal and proper impregnation coverage.' },
+        ].map(item => (
+          <div class="relative bg-white rounded-2xl p-6">
+            <span class="text-5xl font-extrabold text-orange-400/20 absolute top-4 right-4">{item.step}</span>
+            <h3 class="font-extrabold text-lg mb-2">{item.title}</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-900 text-white section-padding">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Order <span class="text-gradient">facade cleaning</span></h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">Contact us for a free assessment and cleaning quote. We restore facades to their original beauty quickly and professionally.</p>
+      <div class="flex flex-wrap justify-center gap-4"><a href="/en/contact" class="bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl px-8 py-4 transition-colors text-lg">Get cleaning quote</a><a href="tel:+48515156233" class="border border-slate-600 hover:border-slate-400 text-white font-semibold rounded-xl px-8 py-4 transition-colors text-lg">Call: 515-156-233</a></div>
+    </div>
+  </section>
+</Layout>

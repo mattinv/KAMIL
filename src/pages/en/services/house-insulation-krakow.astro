@@ -1,0 +1,121 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="House Insulation Krakow — Residential Thermal Modernization" description="Professional house insulation in Krakow and Malopolska. ETICS systems, polystyrene, mineral wool. Free quote within 24h." schemaType="services" locale="en">
+  <section class="bg-slate-900 text-white section-padding">
+    <div class="max-w-7xl mx-auto">
+      <nav class="text-sm text-slate-400 mb-8" aria-label="Breadcrumb"><ol class="flex items-center gap-2"><li><a href="/en" class="hover:text-white transition-colors">Home</a></li><li class="text-slate-600">/</li><li><a href="/en/services" class="hover:text-white transition-colors">Services</a></li><li class="text-slate-600">/</li><li class="text-orange-400">House Insulation Krakow</li></ol></nav>
+      <div class="max-w-4xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">House Insulation <span class="text-gradient">in Krakow</span></h1>
+        <p class="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">Professional thermal modernization of single-family homes using the ETICS system. Reduce heating bills by up to 60% and take advantage of the Clean Air program subsidy.</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/en/contact" class="bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl px-8 py-4 transition-colors">Free quote</a>
+          <a href="tel:+48515156233" class="border border-slate-600 hover:border-slate-400 text-white font-semibold rounded-xl px-8 py-4 transition-colors">Call now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white section-padding">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">What is house insulation?</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <p class="text-lg text-slate-700 mb-4 leading-relaxed">House insulation is a thermal modernization process involving covering external walls with insulation material — most commonly polystyrene or mineral wool — as part of the ETICS (External Thermal Insulation Composite System), also known as the wet render method.</p>
+          <p class="text-lg text-slate-700 mb-4 leading-relaxed">The ETICS system is the most commonly used building insulation technology in Poland. It consists of several layers: adhesive mortar, thermal insulation, reinforcement mesh, primer, and exterior plaster.</p>
+          <p class="text-lg text-slate-700 leading-relaxed">Properly executed insulation can reduce heating costs by <strong>30-60%</strong>, improve the building's energy class, and eliminate thermal bridges. The investment qualifies for the <strong>Clean Air</strong> program subsidy, covering up to 90% of costs.</p>
+        </div>
+        <div class="bg-slate-50 rounded-2xl p-8">
+          <h3 class="text-xl font-extrabold mb-4 text-slate-900">Key benefits</h3>
+          <ul class="space-y-3">
+            {['Heating savings of 30-60% annually', 'Energy class improvement by 2-3 grades', 'Elimination of thermal bridges and mold', 'Compatible with Clean Air program', 'Refreshed home appearance', 'Property value increase of 10-15%'].map(item => (
+              <li class="flex items-start gap-3"><span class="text-orange-500 font-bold text-lg mt-0.5">&#10003;</span><span class="text-slate-700">{item}</span></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-50 section-padding">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">When should you insulate your home?</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        {[
+          { title: 'High heating bills', desc: 'Uninsulated walls account for 30-40% of heat loss. Insulation drastically reduces energy consumption.' },
+          { title: 'Moisture and mold', desc: 'Wet corners, wall mold, window condensation — symptoms of thermal bridges that insulation eliminates permanently.' },
+          { title: 'Facade renovation', desc: 'When renovating a facade, insulate simultaneously. Scaffolding costs are incurred once, benefits are doubled.' },
+          { title: 'Older building', desc: 'Houses from the 1960s-90s were built without adequate insulation. Adding 15-20 cm of polystyrene transforms thermal comfort.' },
+          { title: 'Boiler replacement', desc: 'When replacing heating under Clean Air, insulate at the same time. A smaller boiler will suffice, and the investment pays off faster.' },
+          { title: 'Energy class improvement', desc: 'Energy certificates are mandatory for home sales. Insulation upgrades from class E-F to B-C, significantly boosting market value.' },
+        ].map(item => (
+          <div class="bg-white rounded-2xl p-8 shadow-sm">
+            <h3 class="text-xl font-extrabold mb-3 text-slate-900">{item.title}</h3>
+            <p class="text-slate-600 leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white section-padding">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-8">Materials used for insulation</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { title: 'EPS 70/80 Polystyrene', desc: 'Standard insulation material with lambda=0.040. Economical solution with good thermal parameters.' },
+          { title: 'Graphite polystyrene', desc: 'Enhanced version with graphite additive. Lambda=0.031-0.033. 20% better insulation at the same thickness.' },
+          { title: 'Mineral wool', desc: 'Non-combustible A1 class insulation with excellent vapor permeability. Recommended for fire safety requirements.' },
+          { title: 'XPS base insulation', desc: 'Extruded polystyrene with minimal water absorption. Used in base and foundation zones exposed to ground moisture.' },
+          { title: 'Weber / Baumit adhesives', desc: 'Certified system adhesives for insulation bonding and mesh embedding. Full system warranty from manufacturers.' },
+          { title: 'Silicone plasters', desc: 'Top-class exterior plasters with self-cleaning and hydrophobic properties. Over 500 colors available.' },
+        ].map(item => (
+          <div class="bg-slate-50 rounded-2xl p-6"><h3 class="font-extrabold text-lg mb-2">{item.title}</h3><p class="text-slate-600 text-sm leading-relaxed">{item.desc}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-50 section-padding">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-8">FAQ</h2>
+      <div class="max-w-3xl space-y-4">
+        {[
+          { q: 'How much does house insulation cost per m²?', a: 'From 180 to 350 PLN/m² depending on materials. White EPS with acrylic plaster: 180-220 PLN/m². Graphite with silicone plaster: 250-300 PLN/m². Mineral wool with silicone: 300-350 PLN/m². Prices include materials and labor.' },
+          { q: 'What material is best for insulation?', a: 'Graphite polystyrene (15-20 cm) is best for most homes. Mineral wool is recommended for wooden buildings, historic structures, or high acoustic requirements.' },
+          { q: 'Can I get a Clean Air subsidy?', a: 'Yes — insulation qualifies for Clean Air. Subsidies cover 40-90% of costs depending on income. Maximum amounts: 20,000-60,000 PLN. We help with documentation.' },
+          { q: 'What warranty do you provide?', a: 'We provide 5-10 year warranty on workmanship. Certified ETICS systems (Weber, Baumit) include manufacturer material warranty. Properly installed ETICS lasts 25-30 years.' },
+        ].map(item => (
+          <details class="bg-white rounded-2xl p-6 group">
+            <summary class="text-lg font-extrabold cursor-pointer list-none flex justify-between items-center">{item.q}<span class="text-orange-500 group-open:rotate-45 transition-transform text-2xl">+</span></summary>
+            <p class="mt-4 text-slate-600 leading-relaxed">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white section-padding">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Service Area</h2>
+      <p class="text-lg text-slate-700 mb-8 max-w-3xl leading-relaxed">We insulate homes in Krakow and throughout Malopolska — free on-site quotes included.</p>
+      <div class="flex flex-wrap gap-3">
+        {['Krakow', 'Wieliczka', 'Skawina', 'Niepolomice', 'Myslenice', 'Zabierzow', 'Zielonki', 'all of Malopolska'].map(city => (
+          <span class="bg-slate-100 text-slate-700 px-4 py-2 rounded-xl text-sm font-medium">{city}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-900 text-white section-padding">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Order a <span class="text-gradient">free insulation quote</span></h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">Contact us — detailed quote within 24 hours. Free on-site visit in Krakow area.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/en/contact" class="bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl px-8 py-4 transition-colors text-lg">Get insulation quote</a>
+        <a href="tel:+48515156233" class="border border-slate-600 hover:border-slate-400 text-white font-semibold rounded-xl px-8 py-4 transition-colors text-lg">Call: 515-156-233</a>
+      </div>
+    </div>
+  </section>
+</Layout>

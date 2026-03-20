@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
 const allProjects = await getCollection('projects');
-const plProjects = allProjects.filter((p) => p.id.startsWith('pl/'));
-const sortedProjects = plProjects.sort((a, b) => b.data.year - a.data.year);
+const enProjects = allProjects.filter((p) => p.id.startsWith('en/'));
+const sortedProjects = enProjects.sort((a, b) => b.data.year - a.data.year);
 
 const projectItems = sortedProjects.map((p) => ({
   title: p.data.title,
@@ -12,15 +12,16 @@ const projectItems = sortedProjects.map((p) => ({
   image: p.data.image,
   location: p.data.location,
   year: p.data.year,
-  slug: p.id.replace('pl/', ''),
+  slug: p.id.replace('en/', ''),
 }));
 ---
 
 <Layout
-  title="Realizacje Elewacji — Przed i Po"
-  description="Zobacz nasze zrealizowane projekty elewacji i ociepleń — domy jednorodzinne, budynki wielorodzinne i obiekty komercyjne w całej Polsce."
+  title="Facade Projects — Before and After"
+  description="See our completed facade and insulation projects — single-family homes, multi-family buildings, and commercial properties throughout Poland."
   schemaType="projects"
   projectItems={projectItems}
+  locale="en"
 >
   <!-- Page Hero -->
   <section class="relative pt-32 pb-20 bg-slate-900 overflow-hidden">
@@ -32,11 +33,10 @@ const projectItems = sortedProjects.map((p) => ({
         <span class="text-orange-400 text-sm font-semibold">Portfolio</span>
       </div>
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
-        Nasze <span class="text-gradient">Realizacje</span>
+        Our <span class="text-gradient">Projects</span>
       </h1>
       <p class="mt-6 text-lg text-slate-400 max-w-2xl leading-relaxed">
-        Każdy projekt to historia transformacji. Zobacz, jak zmieniamy budynki
-        w energooszczędne i estetyczne obiekty.
+        Every project is a transformation story. See how we turn buildings into energy-efficient and aesthetically stunning structures.
       </p>
     </div>
   </section>
@@ -50,19 +50,19 @@ const projectItems = sortedProjects.map((p) => ({
           class="gallery-filter active px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 bg-slate-900 text-white"
           data-filter="all"
         >
-          Wszystkie ({sortedProjects.length})
+          All ({sortedProjects.length})
         </button>
         <button
           class="gallery-filter px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 bg-white text-slate-600 border border-slate-200 hover:border-slate-300"
           data-filter="dom"
         >
-          Domy Jednorodzinne ({sortedProjects.filter(p => p.data.category === 'dom').length})
+          Single-Family Homes ({sortedProjects.filter(p => p.data.category === 'dom').length})
         </button>
         <button
           class="gallery-filter px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 bg-white text-slate-600 border border-slate-200 hover:border-slate-300"
           data-filter="komercyjny"
         >
-          Obiekty Komercyjne ({sortedProjects.filter(p => p.data.category === 'komercyjny').length})
+          Commercial ({sortedProjects.filter(p => p.data.category === 'komercyjny').length})
         </button>
       </div>
 
@@ -74,7 +74,7 @@ const projectItems = sortedProjects.map((p) => ({
               class="gallery-card group relative rounded-2xl overflow-hidden border border-slate-100 bg-white hover:shadow-2xl hover:shadow-slate-900/10 transition-all duration-500 hover:-translate-y-1"
               data-category={project.data.category}
             >
-              <a href={`/realizacje/${project.id.replace('pl/', '')}`} class="block">
+              <a href={`/en/projects/${project.id.replace('en/', '')}`} class="block">
                 <div class="aspect-[4/3] bg-slate-200 relative overflow-hidden">
                   {project.data.image && (
                     <img src={project.data.image} alt={project.data.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
@@ -90,7 +90,7 @@ const projectItems = sortedProjects.map((p) => ({
                   {project.data.featured && (
                     <div class="absolute top-4 right-4">
                       <span class="px-3 py-1 bg-red-600 text-xs font-bold text-white rounded-lg">
-                        Wyróżniony
+                        Featured
                       </span>
                     </div>
                   )}
@@ -114,7 +114,7 @@ const projectItems = sortedProjects.map((p) => ({
                   </div>
 
                   <div class="mt-5 flex items-center gap-2 text-red-600 font-semibold text-sm">
-                    <span>Zobacz projekt</span>
+                    <span>View project</span>
                     <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
@@ -132,16 +132,16 @@ const projectItems = sortedProjects.map((p) => ({
   <section class="section-padding bg-slate-900 text-center">
     <div class="max-w-3xl mx-auto">
       <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-        Masz projekt do <span class="text-gradient">zrealizowania?</span>
+        Have a project to <span class="text-gradient">complete?</span>
       </h2>
       <p class="mt-4 text-lg text-slate-400">
-        Skontaktuj się z nami — przygotujemy bezpłatną wycenę.
+        Contact us — we will prepare a free quote.
       </p>
       <a
-        href="/#kontakt"
+        href="/en/contact"
         class="inline-flex items-center gap-3 mt-8 px-8 py-4 bg-red-600 hover:bg-red-500 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-red-600/25"
       >
-        Darmowa Wycena
+        Free Quote
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
         </svg>

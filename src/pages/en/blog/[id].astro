@@ -1,12 +1,12 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  const plPosts = posts.filter((p) => p.id.startsWith('pl/'));
-  return plPosts.map((post) => ({
-    params: { id: post.id.replace('pl/', '') },
+  const enPosts = posts.filter((p) => p.id.startsWith('en/'));
+  return enPosts.map((post) => ({
+    params: { id: post.id.replace('en/', '') },
     props: { post },
   }));
 }
@@ -22,11 +22,12 @@ const baseUrl = 'https://www.elewacjezklasa.pl';
   description={post.data.description}
   type="article"
   schemaType="article"
+  locale="en"
   articleData={{
     title: post.data.title,
     description: post.data.description,
     date: post.data.date,
-    url: `${baseUrl}/poradnik/${post.id}`,
+    url: `${baseUrl}/en/blog/${post.id.replace('en/', '')}`,
   }}
 >
   <!-- Article Header -->
@@ -36,11 +37,11 @@ const baseUrl = 'https://www.elewacjezklasa.pl';
     <div class="relative max-w-4xl mx-auto px-6 lg:px-8">
       <!-- Breadcrumb -->
       <nav class="flex items-center gap-2 text-sm text-slate-400 mb-8">
-        <a href="/" class="hover:text-white transition-colors">Strona główna</a>
+        <a href="/en" class="hover:text-white transition-colors">Home</a>
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
         </svg>
-        <a href="/poradnik" class="hover:text-white transition-colors">Poradnik</a>
+        <a href="/en/blog" class="hover:text-white transition-colors">Blog</a>
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
         </svg>
@@ -53,7 +54,7 @@ const baseUrl = 'https://www.elewacjezklasa.pl';
         </span>
         <span class="text-slate-500 text-sm">{post.data.date}</span>
         <span class="text-slate-600">|</span>
-        <span class="text-slate-500 text-sm">{post.data.readingTime} czytania</span>
+        <span class="text-slate-500 text-sm">{post.data.readingTime} read</span>
       </div>
 
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
@@ -93,10 +94,10 @@ const baseUrl = 'https://www.elewacjezklasa.pl';
           </svg>
         </div>
         <div>
-          <p class="font-bold text-slate-900 text-lg">Elewacje z Klasą</p>
+          <p class="font-bold text-slate-900 text-lg">Elewacje z Klasa</p>
           <p class="text-slate-500 mt-1">
-            Profesjonalna firma elewacyjna z Krakowa. Specjalizujemy się w systemach ETICS,
-            elewacjach wentylowanych i termomodernizacji budynków w całej Małopolsce.
+            Professional facade company from Krakow. We specialize in ETICS systems,
+            ventilated facades, and thermal modernization of buildings throughout Malopolska.
           </p>
           <div class="mt-4 flex flex-wrap gap-3">
             <a href="tel:+48515156233" class="inline-flex items-center gap-2 text-sm font-semibold text-red-600 hover:text-red-500 transition-colors">
@@ -105,8 +106,8 @@ const baseUrl = 'https://www.elewacjezklasa.pl';
               </svg>
               515-156-233
             </a>
-            <a href="/#kontakt" class="inline-flex items-center gap-2 text-sm font-semibold text-red-600 hover:text-red-500 transition-colors">
-              Darmowa Wycena
+            <a href="/en/contact" class="inline-flex items-center gap-2 text-sm font-semibold text-red-600 hover:text-red-500 transition-colors">
+              Free Quote
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
@@ -121,26 +122,26 @@ const baseUrl = 'https://www.elewacjezklasa.pl';
   <section class="section-padding bg-slate-900 text-center">
     <div class="max-w-3xl mx-auto">
       <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-        Potrzebujesz <span class="text-gradient">profesjonalnej wyceny?</span>
+        Need a <span class="text-gradient">professional quote?</span>
       </h2>
       <p class="mt-4 text-lg text-slate-400">
-        Skontaktuj się z nami — bezpłatna konsultacja i kosztorys w 48h.
+        Contact us — free consultation and estimate within 48 hours.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
         <a
-          href="/#kontakt"
+          href="/en/contact"
           class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-red-600 hover:bg-red-500 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-red-600/25"
         >
-          Darmowa Wycena
+          Free Quote
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
           </svg>
         </a>
         <a
-          href="/poradnik"
+          href="/en/blog"
           class="inline-flex items-center justify-center gap-3 px-8 py-4 border border-slate-600 hover:border-red-500/50 text-white font-semibold text-lg rounded-xl transition-all duration-300 hover:bg-white/5"
         >
-          Więcej artykułów
+          More Articles
         </a>
       </div>
     </div>

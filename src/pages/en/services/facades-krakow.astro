@@ -1,0 +1,63 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="Facades Krakow — Professional Facade Services" description="Comprehensive facade services in Krakow — ETICS insulation, decorative plasters, ventilated facades. 15+ years experience. Free quote." schemaType="services" locale="en">
+  <section class="bg-slate-900 text-white section-padding">
+    <div class="max-w-7xl mx-auto">
+      <nav class="text-sm text-slate-400 mb-8" aria-label="Breadcrumb"><ol class="flex items-center gap-2"><li><a href="/en" class="hover:text-white transition-colors">Home</a></li><li class="text-slate-600">/</li><li><a href="/en/services" class="hover:text-white transition-colors">Services</a></li><li class="text-slate-600">/</li><li class="text-orange-400">Facades Krakow</li></ol></nav>
+      <div class="max-w-4xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">Facades <span class="text-gradient">Krakow</span></h1>
+        <p class="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">Comprehensive facade services for single-family homes, multi-family buildings, and commercial properties. Over 15 years of experience in the Krakow market.</p>
+        <div class="flex flex-wrap gap-4"><a href="/en/contact" class="bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl px-8 py-4 transition-colors">Free quote</a><a href="tel:+48515156233" class="border border-slate-600 hover:border-slate-400 text-white font-semibold rounded-xl px-8 py-4 transition-colors">Call us</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white section-padding">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">What do our facade services include?</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <p class="text-lg text-slate-700 mb-4 leading-relaxed">Facade services encompass all work related to the external envelope of a building — from insulation and plastering, through ventilated facade installation, to renovation of existing facades. The facade is both a building's calling card and its first line of defense against weather conditions.</p>
+          <p class="text-lg text-slate-700 mb-4 leading-relaxed">As a facade company with over 15 years of experience in the Krakow market, we handle projects from small single-family homes to large development investments. We specialize in ETICS insulation systems, ventilated facades, and decorative plasters.</p>
+          <p class="text-lg text-slate-700 leading-relaxed">Our advantage is comprehensiveness — one contractor handles all facade work. This gives the client one partner, one warranty, and full schedule control. We work with leading building material manufacturers: Weber, Baumit, Caparol, and Atlas.</p>
+        </div>
+        <div class="space-y-4">
+          {[
+            { title: 'ETICS Insulation', desc: 'Wet render insulation systems — polystyrene, graphite, mineral wool with decorative plaster.' },
+            { title: 'Ventilated facades', desc: 'Modern HPL, fiber-cement, and aluminum panel facades — 50+ year durability.' },
+            { title: 'Decorative plasters', desc: 'Silicone, silicate, and acrylic plasters in lamb and bark beetle textures. Over 500 colors.' },
+            { title: 'Facade renovation', desc: 'Crack repair, filling, washing, painting, and modernization of old facades.' },
+          ].map(item => (
+            <div class="bg-slate-50 rounded-2xl p-6"><h3 class="font-extrabold mb-2">{item.title}</h3><p class="text-slate-600 text-sm">{item.desc}</p></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-50 section-padding">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-8">FAQ</h2>
+      <div class="max-w-3xl space-y-4">
+        {[
+          { q: 'How much do facades cost in Krakow?', a: 'ETICS insulation with silicone plaster: 200-350 PLN/m². Ventilated facade: 500-1200 PLN/m². Existing facade renovation: 80-200 PLN/m². Each project is individually quoted after on-site inspection.' },
+          { q: 'How long do facade works take?', a: 'Single-family home: 3-6 weeks. Multi-family building: 2-4 months. Depends on area, scope, and weather. We always present a realistic schedule.' },
+          { q: 'Which plaster to choose for a facade?', a: 'For single-family homes we recommend silicone plaster — self-cleaning, hydrophobic, most durable. Silicate is good for buildings needing vapor permeability. Acrylic is cheapest but less resistant to dirt.' },
+          { q: 'What warranty do you offer?', a: '5-10 year warranty on workmanship. Certified ETICS systems include manufacturer warranty on materials (up to 25 years). We fix all construction defects under warranty.' },
+        ].map(item => (
+          <details class="bg-white rounded-2xl p-6 group"><summary class="text-lg font-extrabold cursor-pointer list-none flex justify-between items-center">{item.q}<span class="text-orange-500 group-open:rotate-45 transition-transform text-2xl">+</span></summary><p class="mt-4 text-slate-600 leading-relaxed">{item.a}</p></details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-900 text-white section-padding">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Order a <span class="text-gradient">free facade quote</span></h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">Contact us — free on-site visit, building assessment, and detailed offer. We respond within 24 hours.</p>
+      <div class="flex flex-wrap justify-center gap-4"><a href="/en/contact" class="bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl px-8 py-4 transition-colors text-lg">Get facade quote</a><a href="tel:+48515156233" class="border border-slate-600 hover:border-slate-400 text-white font-semibold rounded-xl px-8 py-4 transition-colors text-lg">Call: 515-156-233</a></div>
+    </div>
+  </section>
+</Layout>

@@ -1,6 +1,9 @@
 ---
+import type { Locale } from '../i18n/config';
+
 interface Props {
   type?: 'home' | 'services' | 'projects' | 'about' | 'contact' | 'blog' | 'article';
+  locale?: Locale;
   articleData?: {
     title: string;
     description: string;
@@ -11,7 +14,7 @@ interface Props {
   projectItems?: { title: string; description: string; image: string; location: string; year: number; slug: string }[];
 }
 
-const { type = 'home', articleData, faqItems, projectItems } = Astro.props;
+const { type = 'home', locale = 'pl', articleData, faqItems, projectItems } = Astro.props;
 
 const baseUrl = 'https://www.elewacjezklasa.pl';
 
@@ -89,8 +92,8 @@ const services = [
   },
 ];
 
-// Build breadcrumb based on page type
-const breadcrumbMap: Record<string, { name: string; url: string }[]> = {
+// Build breadcrumb based on page type and locale
+const breadcrumbMapPl: Record<string, { name: string; url: string }[]> = {
   home: [],
   services: [{ name: 'Usługi', url: `${baseUrl}/uslugi` }],
   projects: [{ name: 'Realizacje', url: `${baseUrl}/realizacje` }],
@@ -103,8 +106,22 @@ const breadcrumbMap: Record<string, { name: string; url: string }[]> = {
   ],
 };
 
+const breadcrumbMapEn: Record<string, { name: string; url: string }[]> = {
+  home: [],
+  services: [{ name: 'Services', url: `${baseUrl}/en/services` }],
+  projects: [{ name: 'Projects', url: `${baseUrl}/en/projects` }],
+  about: [{ name: 'About', url: `${baseUrl}/en/about` }],
+  contact: [{ name: 'Contact', url: `${baseUrl}/en/contact` }],
+  blog: [{ name: 'Blog', url: `${baseUrl}/en/blog` }],
+  article: [
+    { name: 'Blog', url: `${baseUrl}/en/blog` },
+    ...(articleData ? [{ name: articleData.title, url: articleData.url }] : []),
+  ],
+};
+
+const breadcrumbMap = locale === 'en' ? breadcrumbMapEn : breadcrumbMapPl;
 const breadcrumbItems = [
-  { name: 'Strona główna', url: baseUrl },
+  { name: locale === 'en' ? 'Home' : 'Strona główna', url: locale === 'en' ? `${baseUrl}/en/` : baseUrl },
   ...(breadcrumbMap[type] || []),
 ];
 

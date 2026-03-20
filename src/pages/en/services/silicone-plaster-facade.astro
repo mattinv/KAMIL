@@ -1,0 +1,45 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="Silicone Plaster for Facades — Durable Facade Finishing" description="Silicone plaster for facades — self-cleaning, hydrophobic, durable. Wide color palette. Professional application in Krakow and Malopolska." schemaType="services" locale="en">
+  <section class="bg-slate-900 text-white section-padding">
+    <div class="max-w-7xl mx-auto">
+      <nav class="text-sm text-slate-400 mb-8" aria-label="Breadcrumb"><ol class="flex items-center gap-2"><li><a href="/en" class="hover:text-white transition-colors">Home</a></li><li class="text-slate-600">/</li><li><a href="/en/services" class="hover:text-white transition-colors">Services</a></li><li class="text-slate-600">/</li><li class="text-orange-400">Silicone Plaster Facade</li></ol></nav>
+      <div class="max-w-4xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">Silicone Plaster <span class="text-gradient">for Facades</span></h1>
+        <p class="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">Self-cleaning, hydrophobic silicone plaster — premium facade finishing. Over 500 colors, lasting durability. Professional application in Krakow and Malopolska.</p>
+        <div class="flex flex-wrap gap-4"><a href="/en/contact" class="bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl px-8 py-4 transition-colors">Free quote</a><a href="tel:+48515156233" class="border border-slate-600 hover:border-slate-400 text-white font-semibold rounded-xl px-8 py-4 transition-colors">Call us</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white section-padding">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Why silicone plaster?</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <p class="text-lg text-slate-700 mb-4 leading-relaxed">Silicone plaster is the highest quality exterior plaster available for facade finishing. Its unique properties include self-cleaning (hydrophobic surface repels water and dirt), resistance to algae and fungi, excellent color retention, and a lifespan of 20-30 years.</p>
+          <p class="text-lg text-slate-700 mb-4 leading-relaxed">Unlike acrylic plasters, silicone plaster combines hydrophobicity with vapor permeability — water droplets bead off the surface while water vapor can pass through. This prevents moisture buildup in the wall while keeping the facade clean.</p>
+          <p class="text-lg text-slate-700 leading-relaxed">We offer silicone plasters from Weber, Baumit, Caparol, and Sto in lamb (baranek) and bark beetle (kornik) textures with grain sizes from 1.0 to 3.0 mm. Over 500 colors available in each manufacturer's palette.</p>
+        </div>
+        <div class="bg-slate-50 rounded-2xl p-8">
+          <h3 class="text-xl font-extrabold mb-4 text-slate-900">Key advantages</h3>
+          <ul class="space-y-3">
+            {['Self-cleaning — rain washes away dirt naturally', 'Hydrophobic — repels water from the surface', 'Vapor-permeable — walls can breathe', 'Algae and fungi resistant', 'UV resistant — color stays vivid for years', 'Durability of 20-30 years', 'Over 500 colors available'].map(item => (
+              <li class="flex items-start gap-3"><span class="text-orange-500 font-bold text-lg mt-0.5">&#10003;</span><span class="text-slate-700">{item}</span></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-900 text-white section-padding">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Choose <span class="text-gradient">silicone plaster</span> for your facade</h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">Contact us for expert advice on plaster selection, color matching, and a free application quote.</p>
+      <div class="flex flex-wrap justify-center gap-4"><a href="/en/contact" class="bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl px-8 py-4 transition-colors text-lg">Get plaster quote</a><a href="tel:+48515156233" class="border border-slate-600 hover:border-slate-400 text-white font-semibold rounded-xl px-8 py-4 transition-colors text-lg">Call: 515-156-233</a></div>
+    </div>
+  </section>
+</Layout>

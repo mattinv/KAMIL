@@ -1,12 +1,26 @@
 ---
+import type { Locale } from '../i18n/config';
+import { localePath } from '../i18n/config';
+import { useTranslations } from '../i18n/ui';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'pl' } = Astro.props;
+const t = useTranslations(locale);
+
 const navLinks = [
-  { label: 'Strona główna', href: '/' },
-  { label: 'Usługi', href: '/uslugi' },
-  { label: 'Realizacje', href: '/realizacje' },
-  { label: 'Poradnik', href: '/poradnik' },
-  { label: 'O nas', href: '/o-nas' },
-  { label: 'Kontakt', href: '/kontakt' },
+  { label: t('nav.home'), href: localePath('/', locale) },
+  { label: t('nav.services'), href: localePath('/uslugi', locale) },
+  { label: t('nav.projects'), href: localePath('/realizacje', locale) },
+  { label: t('nav.blog'), href: localePath('/poradnik', locale) },
+  { label: t('nav.about'), href: localePath('/o-nas', locale) },
+  { label: t('nav.contact'), href: localePath('/kontakt', locale) },
 ];
+
+const contactHref = localePath('/kontakt', locale);
 ---
 
 <header
@@ -16,7 +30,7 @@ const navLinks = [
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <nav class="flex items-center justify-between h-20">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-3 group">
+      <a href={localePath('/', locale)} class="flex items-center gap-3 group">
         <img
           src="/logo.png"
           alt="Elewacje z Klasą"
@@ -34,11 +48,12 @@ const navLinks = [
             {link.label}
           </a>
         ))}
+        <LanguageSwitcher locale={locale} class="text-slate-200 hover:text-orange-400 hover:bg-white/5 ml-1" />
         <a
-          href="/kontakt"
+          href={contactHref}
           class="ml-4 px-6 py-2.5 bg-red-600 hover:bg-red-500 text-white text-sm font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-red-600/25"
         >
-          Darmowa Wycena
+          {t('nav.cta')}
         </a>
       </div>
 
@@ -69,11 +84,12 @@ const navLinks = [
           {link.label}
         </a>
       ))}
+      <LanguageSwitcher locale={locale} class="text-white hover:text-orange-400 text-xl" />
       <a
-        href="/kontakt"
+        href={contactHref}
         class="mt-4 px-8 py-3.5 bg-red-600 hover:bg-red-500 text-white text-lg font-bold rounded-xl transition-all"
       >
-        Darmowa Wycena
+        {t('nav.cta')}
       </a>
     </div>
   </div>

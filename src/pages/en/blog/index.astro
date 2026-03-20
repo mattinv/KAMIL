@@ -1,25 +1,26 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('blog');
-const plPosts = allPosts.filter((p) => p.id.startsWith('pl/'));
-const sortedPosts = plPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const enPosts = allPosts.filter((p) => p.id.startsWith('en/'));
+const sortedPosts = enPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 const featuredPosts = sortedPosts.filter(p => p.data.featured);
 const categories = [
-  { value: 'all', label: 'Wszystkie' },
-  { value: 'ocieplenia', label: 'Ocieplenia' },
-  { value: 'elewacje', label: 'Elewacje' },
-  { value: 'materialy', label: 'Materiały' },
-  { value: 'dotacje', label: 'Dotacje' },
-  { value: 'porady', label: 'Porady' },
+  { value: 'all', label: 'All' },
+  { value: 'ocieplenia', label: 'Insulation' },
+  { value: 'elewacje', label: 'Facades' },
+  { value: 'materialy', label: 'Materials' },
+  { value: 'dotacje', label: 'Subsidies' },
+  { value: 'porady', label: 'Tips' },
 ];
 ---
 
 <Layout
-  title="Poradnik Elewacyjny — Wiedza o Ociepleniach i Elewacjach"
-  description="Praktyczne porady dotyczące ociepleń, elewacji, materiałów izolacyjnych i dotacji. Eksperci Elewacje z Klasą dzielą się wiedzą."
+  title="Facade Knowledge Hub — Insulation & Facade Guides"
+  description="Practical advice on insulation, facades, building materials, and subsidies. Elewacje z Klasa experts share their knowledge."
   schemaType="blog"
+  locale="en"
 >
   <!-- Hero -->
   <section class="relative pt-32 pb-20 bg-slate-900 overflow-hidden">
@@ -31,14 +32,14 @@ const categories = [
         <svg class="w-4 h-4 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
-        <span class="text-orange-400 text-sm font-semibold">Poradnik</span>
+        <span class="text-orange-400 text-sm font-semibold">Knowledge Hub</span>
       </div>
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
-        Poradnik <span class="text-gradient">Elewacyjny</span>
+        Facade <span class="text-gradient">Knowledge Hub</span>
       </h1>
       <p class="mt-6 text-lg text-slate-400 max-w-2xl leading-relaxed">
-        Praktyczna wiedza o ociepleniach, elewacjach i materiałach budowlanych.
-        Odpowiadamy na pytania, które zadają nasi klienci przed rozpoczęciem prac.
+        Practical knowledge about insulation, facades, and building materials.
+        We answer the questions our clients ask before starting work.
       </p>
     </div>
   </section>
@@ -47,13 +48,13 @@ const categories = [
   {featuredPosts.length > 0 && (
     <section class="section-padding bg-white">
       <div class="max-w-7xl mx-auto">
-        <p class="text-sm font-semibold text-orange-500 uppercase tracking-wider mb-6">Wyróżnione artykuły</p>
+        <p class="text-sm font-semibold text-orange-500 uppercase tracking-wider mb-6">Featured articles</p>
         <div class="grid md:grid-cols-2 gap-8">
           {featuredPosts.slice(0, 2).map((post) => (
-            <a href={`/poradnik/${post.id.replace('pl/', '')}`} class="group block rounded-2xl border border-slate-100 bg-slate-50 hover:bg-red-50/50 hover:border-red-200 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/5">
+            <a href={`/en/blog/${post.id.replace('en/', '')}`} class="group block rounded-2xl border border-slate-100 bg-slate-50 hover:bg-red-50/50 hover:border-red-200 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/5">
               <div class="p-8">
                 <div class="flex items-center gap-3 mb-4">
-                  <span class="px-3 py-1 bg-red-600 text-xs font-bold text-white rounded-lg">Wyróżniony</span>
+                  <span class="px-3 py-1 bg-red-600 text-xs font-bold text-white rounded-lg">Featured</span>
                   <span class="px-3 py-1 bg-white text-xs font-semibold text-slate-500 rounded-lg border border-slate-200">{post.data.categoryLabel}</span>
                 </div>
                 <h2 class="text-2xl font-bold text-slate-900 group-hover:text-red-600 transition-colors leading-tight">
@@ -63,10 +64,10 @@ const categories = [
                 <div class="mt-6 flex items-center justify-between">
                   <div class="flex items-center gap-4 text-xs text-slate-400">
                     <span>{post.data.date}</span>
-                    <span>{post.data.readingTime} czytania</span>
+                    <span>{post.data.readingTime} read</span>
                   </div>
                   <span class="inline-flex items-center gap-1 text-sm font-semibold text-red-600">
-                    Czytaj
+                    Read
                     <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
@@ -109,12 +110,12 @@ const categories = [
             class="blog-card group rounded-2xl border border-slate-100 bg-white hover:shadow-xl hover:shadow-slate-900/5 transition-all duration-500 hover:-translate-y-1 overflow-hidden"
             data-category={post.data.category}
           >
-            <a href={`/poradnik/${post.id.replace('pl/', '')}`} class="block p-6">
+            <a href={`/en/blog/${post.id.replace('en/', '')}`} class="block p-6">
               <div class="flex items-center gap-3 mb-4">
                 <span class="px-3 py-1 bg-slate-100 text-xs font-semibold text-slate-600 rounded-lg">
                   {post.data.categoryLabel}
                 </span>
-                <span class="text-xs text-slate-400">{post.data.readingTime} czytania</span>
+                <span class="text-xs text-slate-400">{post.data.readingTime} read</span>
               </div>
 
               <h2 class="text-xl font-bold text-slate-900 group-hover:text-red-600 transition-colors leading-tight">
@@ -125,7 +126,7 @@ const categories = [
               <div class="mt-5 flex items-center justify-between">
                 <span class="text-xs text-slate-400">{post.data.date}</span>
                 <span class="inline-flex items-center gap-1 text-sm font-semibold text-red-600">
-                  Czytaj więcej
+                  Read more
                   <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
@@ -142,16 +143,16 @@ const categories = [
   <section class="section-padding bg-slate-900 text-center">
     <div class="max-w-3xl mx-auto">
       <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-        Masz pytania o <span class="text-gradient">ocieplenie?</span>
+        Have questions about <span class="text-gradient">insulation?</span>
       </h2>
       <p class="mt-4 text-lg text-slate-400">
-        Skontaktuj się z nami — chętnie doradzimy i przygotujemy bezpłatną wycenę.
+        Contact us — we are happy to advise and prepare a free quote.
       </p>
       <a
-        href="/#kontakt"
+        href="/en/contact"
         class="inline-flex items-center gap-3 mt-8 px-8 py-4 bg-red-600 hover:bg-red-500 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:shadow-2xl hover:shadow-red-600/25"
       >
-        Darmowa Wycena
+        Free Quote
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
         </svg>

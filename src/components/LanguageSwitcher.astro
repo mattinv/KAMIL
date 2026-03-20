@@ -1,0 +1,26 @@
+---
+import type { Locale } from '../i18n/config';
+import { getAlternatePath } from '../i18n/config';
+
+interface Props {
+  locale?: Locale;
+  class?: string;
+}
+
+const { locale = 'pl', class: className } = Astro.props;
+const altLocale: Locale = locale === 'pl' ? 'en' : 'pl';
+const currentPath = Astro.url.pathname;
+const altPath = getAlternatePath(currentPath, altLocale);
+---
+
+<a
+  href={altPath}
+  class:list={[
+    'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-300',
+    className,
+  ]}
+  title={altLocale === 'en' ? 'Switch to English' : 'Przełącz na polski'}
+>
+  <span class="text-base leading-none">{altLocale === 'en' ? '🇬🇧' : '🇵🇱'}</span>
+  <span>{altLocale === 'en' ? 'EN' : 'PL'}</span>
+</a>

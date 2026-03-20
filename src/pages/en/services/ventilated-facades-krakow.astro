@@ -1,0 +1,70 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+---
+
+<Layout title="Ventilated Facades Krakow — Modern Cladding Systems" description="Ventilated facade installation in Krakow — HPL panels, fiber-cement, aluminum. 50+ year durability. Design and execution." schemaType="services" locale="en">
+  <section class="bg-slate-900 text-white section-padding">
+    <div class="max-w-7xl mx-auto">
+      <nav class="text-sm text-slate-400 mb-8" aria-label="Breadcrumb"><ol class="flex items-center gap-2"><li><a href="/en" class="hover:text-white transition-colors">Home</a></li><li class="text-slate-600">/</li><li><a href="/en/services" class="hover:text-white transition-colors">Services</a></li><li class="text-slate-600">/</li><li class="text-orange-400">Ventilated Facades Krakow</li></ol></nav>
+      <div class="max-w-4xl">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">Ventilated Facades <span class="text-gradient">Krakow</span></h1>
+        <p class="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">Modern ventilated facades with HPL panels, fiber-cement, and aluminum cladding. Durability exceeding 50 years, excellent thermal and acoustic insulation. Turnkey design and execution.</p>
+        <div class="flex flex-wrap gap-4"><a href="/en/contact" class="bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl px-8 py-4 transition-colors">Free quote</a><a href="tel:+48515156233" class="border border-slate-600 hover:border-slate-400 text-white font-semibold rounded-xl px-8 py-4 transition-colors">Call us</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white section-padding">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">What is a ventilated facade?</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <p class="text-lg text-slate-700 mb-4 leading-relaxed">A ventilated facade is a modern cladding system consisting of several layers: thermal insulation (mineral wool), an air gap (2-4 cm), and external cladding mounted on a metal substructure. The key element is the ventilated air gap between insulation and cladding, allowing free air circulation.</p>
+          <p class="text-lg text-slate-700 mb-4 leading-relaxed">Air circulation in the gap removes moisture from the building structure, prevents water vapor condensation, and provides natural ventilation. In summer, the gap limits wall heating, while in winter it creates an additional thermal barrier.</p>
+          <p class="text-lg text-slate-700 leading-relaxed">Ventilated facades are a premium solution — more durable than traditional ETICS (lifespan over 50 years), resistant to mechanical damage and weather conditions. Ideal for commercial buildings, office towers, modern residences, and prestigious properties.</p>
+        </div>
+        <div class="bg-slate-50 rounded-2xl p-8">
+          <h3 class="text-xl font-extrabold mb-4 text-slate-900">Ventilated facade construction</h3>
+          <ul class="space-y-3">
+            {[
+              { n: '1', text: '<strong>Load-bearing wall</strong> — building structural substrate' },
+              { n: '2', text: '<strong>Substructure</strong> — aluminum or steel brackets and profiles' },
+              { n: '3', text: '<strong>Thermal insulation</strong> — mineral wool 10-20 cm' },
+              { n: '4', text: '<strong>Windproof membrane</strong> — insulation protection from wind' },
+              { n: '5', text: '<strong>Ventilation gap</strong> — 2-4 cm of free air space' },
+              { n: '6', text: '<strong>External cladding</strong> — HPL, fiber-cement, aluminum, or ceramic' },
+            ].map(item => (
+              <li class="flex items-start gap-3"><span class="text-orange-500 font-bold text-lg mt-0.5">{item.n}</span><span class="text-slate-700" set:html={item.text} /></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-50 section-padding">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-8">Materials for ventilated facades</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { title: 'HPL Panels (Trespa, Fundermax)', desc: 'High-pressure laminate — lightweight, durable, UV-resistant. Huge palette of colors and textures including wood and stone imitations.' },
+          { title: 'Equitone / Cedral Panels', desc: 'Fiber-cement panels — natural, mineral texture. Extremely durable and fire-resistant. Excellent for minimalist architecture.' },
+          { title: 'Aluminum Panels (Alucobond)', desc: 'Composite aluminum panels — lightweight, easy to shape. Perfect for large smooth surfaces and modern architecture.' },
+          { title: 'Large-format Ceramic Cladding', desc: 'Ceramic tiles up to 120x360 cm — the most durable and premium option. Scratch, chemical, and UV resistant.' },
+          { title: 'Aluminum/Steel Substructure', desc: 'System substructure transferring loads from cladding to the wall and compensating for building dimensional tolerances.' },
+          { title: 'Mineral Wool + Membrane', desc: 'Mineral wool insulation 10-20 cm protected by windproof membrane. Provides thermal and acoustic insulation.' },
+        ].map(item => (
+          <div class="bg-white rounded-2xl p-6 shadow-sm"><h3 class="font-extrabold text-lg mb-2">{item.title}</h3><p class="text-slate-600 text-sm leading-relaxed">{item.desc}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-slate-900 text-white section-padding">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Order a <span class="text-gradient">ventilated facade project</span></h2>
+      <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">Contact us — we will prepare a design and quote for your building's ventilated facade. Free consultation and on-site inspection.</p>
+      <div class="flex flex-wrap justify-center gap-4"><a href="/en/contact" class="bg-red-600 hover:bg-red-500 text-white font-semibold rounded-xl px-8 py-4 transition-colors text-lg">Get ventilated facade quote</a><a href="tel:+48515156233" class="border border-slate-600 hover:border-slate-400 text-white font-semibold rounded-xl px-8 py-4 transition-colors text-lg">Call: 515-156-233</a></div>
+    </div>
+  </section>
+</Layout>

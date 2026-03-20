@@ -1,12 +1,12 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
-  const plProjects = projects.filter((p) => p.id.startsWith('pl/'));
-  return plProjects.map((project) => ({
-    params: { id: project.id.replace('pl/', '') },
+  const enProjects = projects.filter((p) => p.id.startsWith('en/'));
+  return enProjects.map((project) => ({
+    params: { id: project.id.replace('en/', '') },
     props: { project },
   }));
 }
@@ -19,17 +19,18 @@ const { Content } = await render(project);
   title={project.data.title}
   description={project.data.description}
   type="article"
+  locale="en"
 >
   <!-- Hero -->
   <section class="relative pt-32 pb-16 bg-slate-900 overflow-hidden">
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
 
     <div class="relative max-w-4xl mx-auto px-6 lg:px-8">
-      <a href="/realizacje" class="inline-flex items-center gap-2 text-slate-400 hover:text-orange-400 text-sm font-medium mb-8 transition-colors">
+      <a href="/en/projects" class="inline-flex items-center gap-2 text-slate-400 hover:text-orange-400 text-sm font-medium mb-8 transition-colors">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
         </svg>
-        Powrót do realizacji
+        Back to projects
       </a>
 
       <div class="flex flex-wrap gap-2 mb-4">
@@ -80,16 +81,16 @@ const { Content } = await render(project);
   <section class="section-padding bg-slate-50 text-center">
     <div class="max-w-2xl mx-auto">
       <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
-        Podoba Ci się ten projekt?
+        Like this project?
       </h2>
       <p class="mt-3 text-slate-500">
-        Skontaktuj się z nami, aby omówić Twój projekt.
+        Contact us to discuss your project.
       </p>
       <a
-        href="/#kontakt"
+        href="/en/contact"
         class="inline-flex items-center gap-2 mt-6 px-8 py-3.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-red-600/25"
       >
-        Darmowa Wycena
+        Free Quote
       </a>
     </div>
   </section>
